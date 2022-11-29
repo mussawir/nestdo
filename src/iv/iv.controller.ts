@@ -1,4 +1,16 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
+import { IvService } from './iv.service';
 
 @Controller('iv')
-export class IvController {}
+export class IvController {
+constructor( private ivService:IvService){}
+
+    @Get()
+    GetAllData(){
+        return this.ivService.GetAllData()
+       
+
+    }
+
+   
+}
