@@ -7,8 +7,8 @@ constructor( private ivService:IvService){}
 
     @Get()
     GetAllData(){
-        return this.ivService.GetAllData()
-       
+        // return this.ivService.GetAllData()
+      return {"name": "ali"}; 
 
     }
 
