@@ -1,10 +1,10 @@
 //import { IsNotEmpty, IsNumber, IsEmail } from 'class-validator';
 export class ExistingUserDTO {
-    values:{
+
         email: string;
         password: string;
-      }
-    // // @IsEmail()
+      
+        // // @IsEmail()
     // // @IsNotEmpty()
     // email: string;
 

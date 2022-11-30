@@ -2,11 +2,11 @@
 export class NewUserDTO {
   
 
-    values :{
+
         name: string;
         email: string;
         password: string;
-    }
+   
 //     @IsString()
 //    @IsNotEmpty()
 //     name: string;

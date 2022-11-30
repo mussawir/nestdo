@@ -22,7 +22,7 @@ export class AuthService {
 
   async register(user: Readonly<NewUserDTO>): Promise<UserDetails | any> {
     console.log(user)
-    const {name,email,password } = user.values;
+    const {name,email,password } = user;
   console.log(name, email, password )
     const existingUser = await this.userService.findByEmail(email);
 
@@ -67,7 +67,7 @@ export class AuthService {
   async login(
     existingUser: ExistingUserDTO,
   ): Promise<{ token: string } | null> {
-    const { email, password } = existingUser.values;
+    const { email, password } = existingUser;
     const user = await this.validateUser(email, password);
 
     if (!user)
