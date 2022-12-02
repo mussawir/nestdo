@@ -10,13 +10,7 @@ export class ProjectCatService {
     @InjectModel('project_categories')
     private readonly productModel: Model<ProjectCatDto>,
   ) {}
-// export class ProjectCatService {
-//   private readonly productModel: Model<ProjectCatDto>,{}
-  // private getData=[]
 
-  // GetAllData(){
-  //    return this.getData()
-  // }
 
   async findAll(): Promise<ProjectCatDto[]> {
     return this.productModel.find().exec();
