@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { IvModule } from './iv/iv.module';
 import { ProjectModule } from './project/project.module';
+import { ProjectCatModule } from './ProjectCategories/projectCat.module';
 import { UserModule } from './user/user.module';
 
 @Module({
@@ -16,6 +17,7 @@ import { UserModule } from './user/user.module';
      UserModule,
     AuthModule,
     ProjectModule,
+    ProjectCatModule,
   ],
   controllers: [AppController],
   providers: [AppService],
