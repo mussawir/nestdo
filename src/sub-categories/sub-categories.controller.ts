@@ -3,7 +3,7 @@ import { CreateSubCategoryDto } from './dto/create-sub-categories.dto';
 import { UpdateSubCategoryDto } from './dto/update-sub-categories.dto';
 
 import { SubCategory } from './schemas/sub_categories.schema';
-import { SubCategoriesService } from './sub_categories.service';
+import { SubCategoriesService } from './sub-categories.service';
 
 @Controller('subCategories')
 export class CategoriesController {

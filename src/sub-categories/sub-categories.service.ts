@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { UpdateSubCategoryDto } from "./dto/update-sub-categories.dto";
 
 import { SubCategory } from "./schemas/sub_categories.schema";
-import { SubCategoriesRepository } from "./sub_categories.repository";
+import { SubCategoriesRepository } from "./sub-categories.repository";
 
 @Injectable()
 export class SubCategoriesService{

@@ -8,7 +8,7 @@ import { ProjectModule } from './project/project.module';
 import { ProjectCatModule } from './ProjectCategories/projectCat.module';
 import { UserModule } from './user/user.module';
 import {CategoriesModule} from './categories/categories.module'
-import { SubCategoriesModule } from './sub-categories/sub_categories.module';
+import { SubCategoriesModule } from './sub-categories/sub-categories.module';
 
 @Module({
   imports: [
