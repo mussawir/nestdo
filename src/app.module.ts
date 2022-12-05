@@ -7,6 +7,7 @@ import { IvModule } from './iv/iv.module';
 import { ProjectModule } from './project/project.module';
 import { ProjectCatModule } from './ProjectCategories/projectCat.module';
 import { UserModule } from './user/user.module';
+import {CategoriesModule} from './categories/categories.module'
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { UserModule } from './user/user.module';
     AuthModule,
     ProjectModule,
     ProjectCatModule,
+    CategoriesModule 
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -6,7 +6,7 @@ import { Category } from "./schemas/categories.schema";
 import { CategoriesRepository } from "./categories.repository";
 
 @Injectable()
-export class CategoriesService {
+export class CategoriesService{
     constructor(private readonly categoriesRepository: CategoriesRepository) {}
 
     async getCategoryById(categoryId: string): Promise<Category> {
