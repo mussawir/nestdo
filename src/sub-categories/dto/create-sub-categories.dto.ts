@@ -1,4 +1,4 @@
-export class UpdateCategoryDto {
+export class CreateSubCategoryDto {
     name: string;
     categoryId:string;
 }

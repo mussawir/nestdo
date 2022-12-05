@@ -12,7 +12,7 @@ export class SubCategory {
     name: string;
 
     @Prop()   
-     sub_categoryid:string;
+     sub_categoryId:string;
 
 }
 

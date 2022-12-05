@@ -1,31 +1,31 @@
 import { Injectable } from "@nestjs/common";
 import { v4 as uuidv4 } from 'uuid';
-import { UpdateCategoryDto } from "./dto/update.dto";
+import { UpdateSubCategoryDto } from "./dto/update-sub-categories.dto";
 
 import { SubCategory } from "./schemas/sub_categories.schema";
-import { CategoriesRepository } from "./sub_categories.repository";
+import { SubCategoriesRepository } from "./sub_categories.repository";
 
 @Injectable()
-export class CategoriesService{
-    constructor(private readonly categoriesRepository: CategoriesRepository) {}
+export class SubCategoriesService{
+    constructor(private readonly subCategoriesRepository: SubCategoriesRepository) {}
 
     async getCategoryById(sub_categoryId: string): Promise<SubCategory> {
-        return this.categoriesRepository.findOne({ sub_categoryId })
+        return this.subCategoriesRepository.findOne({ sub_categoryId })
     }
 
     async getCategories(): Promise<SubCategory[]> {
-        return this.categoriesRepository.find({});
+        return this.subCategoriesRepository.find({});
     }
 
-    async createCategory(name: string): Promise<SubCategory> {
-        return this.categoriesRepository.create({
-            sub_categoryid: uuidv4(),
-            categoryId: uuidv4(),
+    async createSubCategory(name: string, categoryId: string): Promise<SubCategory> {
+        return this.subCategoriesRepository.create({
+            sub_categoryId: uuidv4(),
+            categoryId,
             name
         })
     }
 
-    async updateCategory(categoryId: string, categoryUpdates: UpdateCategoryDto): Promise<SubCategory> {
-        return this.categoriesRepository.findOneAndUpdate({ categoryId }, categoryUpdates);
+    async updateCategory(categoryId: string, subCategoryUpdates: UpdateSubCategoryDto): Promise<SubCategory> {
+        return this.subCategoriesRepository.findOneAndUpdate({ categoryId }, subCategoryUpdates);
     }
 }

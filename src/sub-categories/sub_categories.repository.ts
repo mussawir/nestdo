@@ -5,7 +5,7 @@ import { FilterQuery, Model } from "mongoose";
 import { SubCategory, SubCategoryDocument } from "./schemas/sub_categories.schema";
 
 @Injectable()
-export class CategoriesRepository {
+export class SubCategoriesRepository {
     constructor(@InjectModel(SubCategory.name) private SubCategoryModel: Model<SubCategoryDocument>) {}
 
     async findOne(SubCategoryFilterQuery: FilterQuery<SubCategory>): Promise<SubCategory> {
