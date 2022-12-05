@@ -5,8 +5,8 @@ import { UpdateSubCategoryDto } from './dto/update-sub-categories.dto';
 import { SubCategory } from './schemas/sub_categories.schema';
 import { SubCategoriesService } from './sub-categories.service';
 
-@Controller('subCategories')
-export class CategoriesController {
+@Controller('SubCategories')
+export class SubCategoriesController {
   constructor(private readonly sub_categoriesService: SubCategoriesService) {}
 
   @Get(':sub_categoryid')
