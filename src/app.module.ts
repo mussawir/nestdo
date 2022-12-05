@@ -5,10 +5,9 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { IvModule } from './iv/iv.module';
 import { ProjectModule } from './project/project.module';
-import { ProjectCatModule } from './ProjectCategories/projectCat.module';
 import { UserModule } from './user/user.module';
 import {CategoriesModule} from './categories/categories.module'
-import { SubCategoriesModule } from './sub-categories/sub-categories.module';
+import { SubCategoriesModule } from './subCategories/subcategories.module';
 
 @Module({
   imports: [
@@ -16,10 +15,9 @@ import { SubCategoriesModule } from './sub-categories/sub-categories.module';
   MongooseModule.forRoot('mongodb+srv://doadmin:v5X4mW98T7aD12Z3@investingverse-1f75c212.mongo.ondigitalocean.com/admin?authSource=admin&replicaSet=investingverse&tls=true'),
     IvModule,
     ProjectModule,
-     UserModule,
+    UserModule,
     AuthModule,
     ProjectModule,
-    ProjectCatModule,
     CategoriesModule ,
     SubCategoriesModule
   ],

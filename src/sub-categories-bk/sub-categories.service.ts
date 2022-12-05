@@ -9,11 +9,11 @@ import { SubCategoriesRepository } from "./sub-categories.repository";
 export class SubCategoriesService{
     constructor(private readonly subCategoriesRepository: SubCategoriesRepository) {}
 
-    async getCategoryById(sub_categoryId: string): Promise<SubCategory> {
+    async getSubCategoryById(sub_categoryId: string): Promise<SubCategory> {
         return this.subCategoriesRepository.findOne({ sub_categoryId })
     }
 
-    async getCategories(): Promise<SubCategory[]> {
+    async getSubCategories(): Promise<SubCategory[]> {
         return this.subCategoriesRepository.find({});
     }
 
@@ -25,7 +25,7 @@ export class SubCategoriesService{
         })
     }
 
-    async updateCategory(categoryId: string, subCategoryUpdates: UpdateSubCategoryDto): Promise<SubCategory> {
+    async updateSubCategory(categoryId: string, subCategoryUpdates: UpdateSubCategoryDto): Promise<SubCategory> {
         return this.subCategoriesRepository.findOneAndUpdate({ categoryId }, subCategoryUpdates);
     }
 }
