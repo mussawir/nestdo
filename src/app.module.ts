@@ -8,6 +8,7 @@ import { ProjectModule } from './project/project.module';
 import { UserModule } from './user/user.module';
 import {CategoriesModule} from './categories/categories.module'
 import { SubCategoriesModule } from './subCategories/subcategories.module';
+import { CountryModule } from './Country/country.module';
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { SubCategoriesModule } from './subCategories/subcategories.module';
     AuthModule,
     ProjectModule,
     CategoriesModule ,
-    SubCategoriesModule
+    SubCategoriesModule,
+    CountryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
