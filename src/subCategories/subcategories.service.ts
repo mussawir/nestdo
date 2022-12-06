@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { UpdateSubCategoryDto } from "./dto/update-subcategories.dto";
 
 import { SubCategory } from "./schemas/subcategories.schema";
-import { SubCategoriesRepository } from "./subcategories.repository";
+import { SubCategoriesRepository } from "./subCategories.repository";
 
 @Injectable()
 export class SubCategoriesService{
@@ -13,14 +13,19 @@ export class SubCategoriesService{
         return this.subCategoriesRepository.findOne({ subcategoryId })
     }
 
+    async getSubCategoriesByCat(categoryId: string): Promise<SubCategory> {
+        return this.subCategoriesRepository.findOne({ categoryId })
+    }
+
     async getSubCategories(): Promise<SubCategory[]> {
         return this.subCategoriesRepository.find({});
     }
 
-    async createSubCategory(name: string): Promise<SubCategory> {
+    async createSubCategory(name: string, categoryId: string): Promise<SubCategory> {
         return this.subCategoriesRepository.create({
             subcategoryId: uuidv4(),
-            name
+            name,
+            categoryId
         })
     }
 

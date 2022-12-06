@@ -12,6 +12,11 @@ export class SubCategoriesRepository {
         return this.SubCategoryModel.findOne(SubCategoryFilterQuery);
     }
 
+    //Basic search using MongoDB queries 
+    async findByCat(SubCategoryFilterQuery: FilterQuery<SubCategory>): Promise<SubCategory[]> {
+        return this.SubCategoryModel.find(SubCategoryFilterQuery);
+    }
+
     async find(SubCategorysFilterQuery: FilterQuery<SubCategory>): Promise<SubCategory[]> {
         return this.SubCategoryModel.find(SubCategorysFilterQuery)
     }

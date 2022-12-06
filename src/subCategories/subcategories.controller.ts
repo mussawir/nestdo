@@ -3,15 +3,20 @@ import { CreateSubCategoryDto } from './dto/create-subcategories.dto';
 import { UpdateSubCategoryDto } from './dto/update-subcategories.dto';
 
 import { SubCategory } from './schemas/subcategories.schema';
-import { SubCategoriesService } from './subcategories.service';
+import { SubCategoriesService } from './subCategories.service';
 
-@Controller('categories')
+@Controller('subcategories')
 export class SubCategoriesController {
   constructor(private readonly subCategoriesService: SubCategoriesService) {}
 
-  @Get(':subcategoryId')
-  async getSubCategory(@Param('subcategoryId') subcategoryId: string): Promise<SubCategory> {
-    return this.subCategoriesService.getSubCategoryById(subcategoryId);
+  // @Get(':subcategoryId')
+  // async getSubCategory(@Param('subcategoryId') subcategoryId: string): Promise<SubCategory> {
+  //   return this.subCategoriesService.getSubCategoryById(subcategoryId);
+  // }
+  
+  @Get(':categoryId')
+  async getByCats(@Param('categoryId') categoryId: string): Promise<SubCategory[]> {
+    return this.subCategoriesService.getSubCategoriesByCat(categoryId);
   }
   
   @Get()
@@ -21,7 +26,7 @@ export class SubCategoriesController {
 
   @Post()
   async createSubCategory(@Body() createSubCategoryDto: CreateSubCategoryDto): Promise<SubCategory> {
-      return this.subCategoriesService.createSubCategory(createSubCategoryDto.name)
+      return this.subCategoriesService.createSubCategory(createSubCategoryDto.name, createSubCategoryDto.categoryId)
   }
 
   @Patch(':subategoryId')
