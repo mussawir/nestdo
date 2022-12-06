@@ -13,8 +13,8 @@ export class SubCategoriesService{
         return this.subCategoriesRepository.findOne({ subcategoryId })
     }
 
-    async getSubCategoriesByCat(categoryId: string): Promise<SubCategory> {
-        return this.subCategoriesRepository.findOne({ categoryId })
+    async getSubCategoriesByCat(categoryId: string): Promise<SubCategory[]> {
+        return this.subCategoriesRepository.find({ categoryId })
     }
 
     async getSubCategories(): Promise<SubCategory[]> {
