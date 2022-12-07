@@ -10,8 +10,8 @@ export class CountryController {
   constructor(private readonly countryService: CountryService) {}
 
   @Get(':countryId')
-  async getCategory(@Param('countryId') countryId: string): Promise<Country> {
-    return this.countryService.getCountryIdById(countryId);
+  async getCountry(@Param('countryId') countryId: string): Promise<Country> {
+    return this.countryService.getCountryById(countryId);
   }
   
   @Get()
@@ -20,12 +20,12 @@ export class CountryController {
   }
 
   @Post()
-  async createCategory(@Body() createCountryDto: CreateCountryDto): Promise<Country> {
+  async createCountry(@Body() createCountryDto: CreateCountryDto): Promise<Country> {
       return this.countryService.createCountry(createCountryDto.name)
   }
 
   @Patch(':countryId')
-  async updateCategory(@Param('countryId') countryId: string, @Body() updateCountryDto: UpdateCountryDto): Promise<Country> {
+  async updateCountry(@Param('countryId') countryId: string, @Body() updateCountryDto: UpdateCountryDto): Promise<Country> {
       return this.countryService.updateCountry(countryId, updateCountryDto);
   }
 }

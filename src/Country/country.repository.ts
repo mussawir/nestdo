@@ -5,7 +5,7 @@ import { FilterQuery, Model } from "mongoose";
 import { Country, CountryDocument } from "./schemas/country.schema";
 
 @Injectable()
-export class CategoriesRepository {
+export class CountryRepository {
     constructor(@InjectModel(Country.name) private CountryModel: Model<CountryDocument>) {}
 
     async findOne(CountryFilterQuery: FilterQuery<Country>): Promise<Country> {

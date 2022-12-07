@@ -3,28 +3,28 @@ import { v4 as uuidv4 } from 'uuid';
 import { UpdateCountryDto } from "./dto/update-country.dto";
 
 import { Country } from "./schemas/country.schema";
-import { CategoriesRepository } from "./country.repository";
+import { CountryRepository } from "./country.repository";
 
 @Injectable()
 export class CountryService{
-    constructor(private readonly categoriesRepository: CategoriesRepository) {}
+    constructor(private readonly countryRepository: CountryRepository) {}
 
-    async getCountryIdById(CountryId: string): Promise<Country> {
-        return this.categoriesRepository.findOne({ CountryId })
+    async getCountryById(CountryId: string): Promise<Country> {
+        return this.countryRepository.findOne({ CountryId })
     }
 
     async getCountry(): Promise<Country[]> {
-        return this.categoriesRepository.find({});
+        return this.countryRepository.find({});
     }
 
     async createCountry(name: string): Promise<Country> {
-        return this.categoriesRepository.create({
-            CountryId: uuidv4(),
+        return this.countryRepository.create({
+            countryId: uuidv4(),
             name
         })
     }
 
     async updateCountry(CountryId: string, CountryUpdates: UpdateCountryDto): Promise<Country> {
-        return this.categoriesRepository.findOneAndUpdate({ CountryId }, CountryUpdates);
+        return this.countryRepository.findOneAndUpdate({ CountryId }, CountryUpdates);
     }
 }

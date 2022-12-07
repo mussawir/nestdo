@@ -6,9 +6,9 @@ export type CountryDocument = Country & Document;
 @Schema()
 export class Country {
     @Prop()
-    CountryId:string;
+    countryId:string;
     @Prop()
     name: string;
 }
 
-export const CategorySchema = SchemaFactory.createForClass(Country);
+export const CountrySchema = SchemaFactory.createForClass(Country);
