@@ -8,82 +8,82 @@ export class Project {
     @Prop()
     projectId:string;
     
-    @Prop()
-    title: string;
+    @Prop({ required: false })
+    title: string
     
-    @Prop()
+    @Prop({ required: false })
     subTitle: string;
 
-    @Prop()
+    @Prop({ required: false })
     description: string;
     
-    @Prop()
+    @Prop({ required: false })
     risksChallenges: string;
     
-    @Prop()
+    @Prop({ required: false })
     image: string;
     
-    @Prop()
+    @Prop({ required: false })
     video: string;
     
-    @Prop()
+    @Prop({ required: false })
     websiteUrl: string;
     
-    @Prop()
+    @Prop({ required: false })
     targetAmount: string;
     
-    @Prop()
+    @Prop({ required: false })
     investorShare: string;
     
-    @Prop()
+    @Prop({ required: false })
     targetLaunchDate: string;
     
-    @Prop()
+    @Prop({ required: false })
     cDFixed: string;
     
-    @Prop()
+    @Prop({ required: false })
     duration: string;
     
-    @Prop()
+    @Prop({ required: false })
     popId: string;
     
-    @Prop()
+    @Prop({ required: false })
     profileId: string;
     
-    @Prop()
+    @Prop({ required: false })
     ivProfileUrl: string;
     
-    @Prop()
+    @Prop({ required: false })
     paymentEmail: string;
     
-    @Prop()
+    @Prop({ required: false })
     paymentPtype: string;
     
-    @Prop()
+    @Prop({ required: false })
     type: string;
     
-    @Prop()
+    @Prop({ required: false })
     bankAccount: string;
     
-    @Prop()
+    @Prop({ required: false })
     payments: string;
     
-    @Prop()
+    @Prop({ required: false })
     varified: number;
     
-    @Prop()
+    @Prop({ required: false })
     categoryId: string;
     
-    @Prop()
+    @Prop({ required: false })
     subcategoryId: string;
     
-    @Prop()
+    @Prop({ required: false })
     countryId: string;
     
-    @Prop()
+    @Prop({ required: false })
     createdDate: string;
     
-    @Prop()
+    @Prop({ required: false })
     updatedDate: string;
   
 }

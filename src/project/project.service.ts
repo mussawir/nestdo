@@ -15,7 +15,7 @@ export class ProjectService {
   }
 
   constructor(
-    @InjectModel('project') private ProjectModule: Model<ProjectModule>,
+    @Injectable('project') private ProjectModule: Model<ProjectModule>,
   ) {}
 
   async Project(project: Project) {
