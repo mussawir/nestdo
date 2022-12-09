@@ -1,13 +1,13 @@
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
-import { Country, CategorySchema } from "./schemas/country.schema";
+import { Country, CountrySchema } from "./schemas/country.schema";
 import { CountryController } from "./country.controller";
-import { CategoriesRepository } from "./country.repository";
+import { CountryRepository } from "./country.repository";
 import { CountryService } from "./country.service";
 
 @Module({
-    imports: [MongooseModule.forFeature([{ name: Country.name, schema: CategorySchema }])],
+    imports: [MongooseModule.forFeature([{ name: Country.name, schema: CountrySchema }])],
     controllers: [CountryController],
-    providers: [CountryService, CategoriesRepository]
+    providers: [CountryService, CountryRepository]
 })
 export class CountryModule {}

@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { v4 as uuidv4 } from 'uuid';
-import { UpdateProjectDto } from "./dto/update-project.dto";
+import { UpdateCSProjectDto } from "./dto/update-csproject.dto";
 
 import { Project } from "./schemas/project.schema";
 import { ProjectRepository } from "./project.repository";
@@ -17,14 +17,15 @@ export class ProjectService{
         return this.projectRepository.find({});
     }
 
-    async createProject(name: string): Promise<Project> {
+    async createProject(categoryId:string, subcategoryId:string): Promise<Project> {
         return this.projectRepository.create({
             projectId: uuidv4(),
-            name
+            categoryId,
+            subcategoryId,
         })
     }
 
-    async updateProject(projectId: string, ProjectUpdates: UpdateProjectDto): Promise<Project> {
-        return this.projectRepository.findOneAndUpdate({ projectId }, ProjectUpdates);
+    async updateProject(projectId: string, ProjectCSUpdates: UpdateCSProjectDto): Promise<Project> {
+        return this.projectRepository.findOneAndUpdate({ projectId }, ProjectCSUpdates);
     }
 }
