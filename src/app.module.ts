@@ -18,7 +18,6 @@ import { CountryModule } from './Country/country.module';
     ProjectModule,
     UserModule,
     AuthModule,
-    ProjectModule,
     CategoriesModule ,
     SubCategoriesModule,
     CountryModule,

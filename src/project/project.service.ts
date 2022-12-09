@@ -1,31 +1,121 @@
-import { Injectable } from "@nestjs/common";
-import { v4 as uuidv4 } from 'uuid';
-import { UpdateCSProjectDto } from "./dto/update-csproject.dto";
+import { HttpException, Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { ProjectDto } from './project.dto';
+import { ProjectModule } from './project.module';
 
-import { Project } from "./schemas/project.schema";
-import { ProjectRepository } from "./project.repository";
+interface Project {
+  projectId: string;
+
+  title: string;
+
+  subTitle: string;
+
+  description: string;
+
+  risksChallenges: string;
+
+  image: string;
+
+  video: string;
+
+  websiteUrl: string;
+
+  targetAmount: string;
+
+  investorShare: string;
+
+  targetLaunchDate: string;
+
+  cDFixed: string;
+
+  duration: string;
+
+  popId: string;
+
+  profileId: string;
+
+  ivProfileUrl: string;
+
+  paymentEmail: string;
+
+  paymentPtype: string;
+
+  type: string;
+
+  bankAccount: string;
+
+  payments: string;
+
+  varified: number;
+
+  categoryId: string;
+
+  subcategoryId: string;
+
+  countryId: string;
+
+  createdDate: string;
+
+  updatedDate: string;
+}
 
 @Injectable()
-export class ProjectService{
-    constructor(private readonly projectRepository: ProjectRepository) {}
+export class ProjectService {
+  project(ProjectDto: ProjectDto): any {
+    throw new Error('Method not implemented.');
+  }
 
-    async getProjectIdById(projectId: string): Promise<Project> {
-        return this.projectRepository.findOne({ projectId })
-    }
+  constructor(
+    @InjectModel('Project') private ProjectModule: Model<ProjectModule>,
+  ) {}
 
-    async getProject(): Promise<Project[]> {
-        return this.projectRepository.find({});
-    }
+  async Project(project: Project) {
+    const CreateProject = new this.ProjectModule({
 
-    async createProject(categoryId:string, subcategoryId:string): Promise<Project> {
-        return this.projectRepository.create({
-            projectId: uuidv4(),
-            categoryId,
-            subcategoryId,
-        })
-    }
+      projectId: project.projectId,
+      title: project.title,
+      subTitle: project.subTitle,
+      description: project.description,
+      risksChallenges: project.risksChallenges,
+      image: project.image,
+      video: project.video,
+      websiteUrl: project.websiteUrl,
+      targetAmount: project.targetAmount,
+      investorShare: project.investorShare,
+      targetLaunchDate: project.targetLaunchDate,
+      cDFixed: project.cDFixed,
+      duration: project.duration,
+      popId: project.popId,
+      profileId: project.profileId,
+      ivProfileUrl: project.ivProfileUrl,
+      paymentEmail: project.paymentEmail,
+      paymentPtype: project.paymentPtype,
+      type: project.type,
+      bankAccount: project.bankAccount,
+      payments: project.payments,
+      varified: project.varified,
+      categoryId: project.categoryId,
+      subcategoryId: project.subcategoryId,
+      countryId: project.countryId,
+      createdDate: project.createdDate,
+      updatedDate: project.updatedDate,
+    });
 
-    async updateProject(projectId: string, ProjectCSUpdates: UpdateCSProjectDto): Promise<Project> {
-        return this.projectRepository.findOneAndUpdate({ projectId }, ProjectCSUpdates);
+    CreateProject.save();
+    try {
+      await CreateProject.save();
+      console.log('dataSave', CreateProject);
+    } catch (error) {
+      if (error.message.includes('name')) {
+        throw new HttpException('name has been taken', 404);
+      }
+      if (error.message.includes('price')) {
+        throw new HttpException('price has been taken', 404);
+      }
+      if (error.message.includes('description')) {
+        throw new HttpException('description has been taken', 404);
+      }
     }
+  }
 }

@@ -1,31 +1,18 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
-import { CreateProjectDto } from './dto/create-project.dto';
-import { UpdateCSProjectDto } from './dto/update-csproject.dto';
-
-import { Project } from './schemas/project.schema';
+import { Body, Controller, Post, ValidationPipe } from '@nestjs/common';
+ //import { Project } from './Project.model';
 import { ProjectService } from './project.service';
+import { ProjectDto } from './project.dto';
 
-@Controller('Project')
+
+@Controller('project')
 export class ProjectController {
-  constructor(private readonly projectService: ProjectService) {}
 
-  @Get(':projectId')
-  async getProject(@Param('projectId') projectId: string): Promise<Project> {
-    return this.projectService.getProjectIdById(projectId);
-  }
-  
-  @Get()
-  async getproject(): Promise<Project[]> {
-      return this.projectService.getProject();
-  }
+constructor(
+    private readonly ProjectService:ProjectService
+){}
 
-  @Post()
-  async createProject(@Body() createProjectDto: CreateProjectDto): Promise<Project> {
-      return this.projectService.createProject(createProjectDto.categoryId,createProjectDto.subcategoryId )
+    @Post()
+    Project(@Body() ProjectDto:ProjectDto): any{
+  return this.ProjectService.Project(ProjectDto)
     }
-//update 
-  @Patch(':projectId')
-  async updateProject(@Param('projectId') projectId: string, @Body() updateCSProjectDto: UpdateCSProjectDto): Promise<Project> {
-      return this.projectService.updateProject(projectId, updateCSProjectDto);
-  }
 }
