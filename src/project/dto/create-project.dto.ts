@@ -1,4 +1,5 @@
 export class CreateProjectDto {
-    name: string;
+    categoryId: string;
+    subcategoryId: string;
     projectId:string;
 }
