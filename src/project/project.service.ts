@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { ProjectDto } from './project.dto';
 import { ProjectModule } from './project.module';
-
+import { v4 as uuidv4 } from 'uuid';
 interface Project {
   projectId: string;
 
@@ -73,7 +73,7 @@ export class ProjectService {
   async Project(project: Project) {
     const CreateProject = new this.ProjectModule({
 
-      projectId: project.projectId,
+      projectId:  uuidv4(),
       title: project.title,
       subTitle: project.subTitle,
       description: project.description,
@@ -103,19 +103,24 @@ export class ProjectService {
     });
 
     CreateProject.save();
-    try {
-      await CreateProject.save();
-      console.log('dataSave', CreateProject);
-    } catch (error) {
-      if (error.message.includes('name')) {
-        throw new HttpException('name has been taken', 404);
-      }
-      if (error.message.includes('price')) {
-        throw new HttpException('price has been taken', 404);
-      }
-      if (error.message.includes('description')) {
-        throw new HttpException('description has been taken', 404);
-      }
-    }
+
+
+
+
+
+    // try {
+    //   await CreateProject.save();
+    //   console.log('dataSave', CreateProject);
+    // } catch (error) {
+    //   if (error.message.includes('name')) {
+    //     throw new HttpException('name has been taken', 404);
+    //   }
+    //   if (error.message.includes('price')) {
+    //     throw new HttpException('price has been taken', 404);
+    //   }
+    //   if (error.message.includes('description')) {
+    //     throw new HttpException('description has been taken', 404);
+    //   }
+    // }
   }
 }
