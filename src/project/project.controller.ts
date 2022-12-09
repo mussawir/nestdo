@@ -1,31 +1,20 @@
 import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
-import { CreateCountryDto } from './dto/create-country.dto';
-import { UpdateCountryDto } from './dto/update-country.dto';
+import { CreateProjectDto } from './dto/create-project.dto';
+import { UpdateProjectDto } from './dto/update-project.dto';
 
-import { Country } from './schemas/country.schema';
-import { CountryService } from './country.service';
+import { Project } from './schemas/project.schema';
+import { ProjectService } from './project.service';
 
-@Controller('country')
-export class CountryController {
-  constructor(private readonly countryService: CountryService) {}
 
-  @Get(':countryId')
-  async getCountry(@Param('countryId') countryId: string): Promise<Country> {
-    return this.countryService.getCountryById(countryId);
-  }
-  
-  @Get()
-  async getcountry(): Promise<Country[]> {
-      return this.countryService.getCountry();
-  }
+@Controller('project')
+export class ProjectController {
 
-  @Post()
-  async createCountry(@Body() createCountryDto: CreateCountryDto): Promise<Country> {
-      return this.countryService.createCountry(createCountryDto.name)
-  }
+constructor(
+    private readonly ProjectService:ProjectService
+){}
 
-  @Patch(':countryId')
-  async updateCountry(@Param('countryId') countryId: string, @Body() updateCountryDto: UpdateCountryDto): Promise<Country> {
-      return this.countryService.updateCountry(countryId, updateCountryDto);
-  }
+    @Post()
+    Project(@Body() ProjectDto:ProjectDto): any{
+  return this.ProjectService.Project(ProjectDto)
+    }
 }

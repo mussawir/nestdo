@@ -2,26 +2,21 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { FilterQuery, Model } from "mongoose";
 
-import { Country, CountryDocument } from "./schemas/country.schema";
+import { Project, ProjectDocument } from "./schemas/project.schema";
 
 @Injectable()
-export class CountryRepository {
-    constructor(@InjectModel(Country.name) private CountryModel: Model<CountryDocument>) {}
+export class ProjectRepository {
+    constructor(@InjectModel(Project.name) private ProjectModel: Model<ProjectDocument>) {}
 
-    async findOne(CountryFilterQuery: FilterQuery<Country>): Promise<Country> {
-        return this.CountryModel.findOne(CountryFilterQuery);
+    async findOne(ProjectFilterQuery: FilterQuery<Project>): Promise<Project> {
+        return this.ProjectModel.findOne(ProjectFilterQuery);
     }
 
-    async find(CountrysFilterQuery: FilterQuery<Country>): Promise<Country[]> {
-        return this.CountryModel.find(CountrysFilterQuery)
+    async find(ProjectFilterQuery: FilterQuery<Project>): Promise<Project[]> {
+        return this.ProjectModel.find(ProjectFilterQuery)
     }
 
-    async create(Country: Country): Promise<Country> {
-        const newCountry = new this.CountryModel(Country);
-        return newCountry.save()
+    async create(Project: Project): Promise<Project> {
+        const newProject = new this.ProjectModel(Project);
+        return newProject.save()
     }
-
-    async findOneAndUpdate(CountryFilterQuery: FilterQuery<Country>, Country: Partial<Country>): Promise<Country> {
-        return this.CountryModel.findOneAndUpdate(CountryFilterQuery, Country, { new: true });
-    }
-}

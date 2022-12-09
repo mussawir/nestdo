@@ -1,30 +1,44 @@
 import { Injectable } from "@nestjs/common";
 import { v4 as uuidv4 } from 'uuid';
-import { UpdateCountryDto } from "./dto/update-country.dto";
+import { UpdateProjectDto } from "./dto/update-project.dto";
 
-import { Country } from "./schemas/country.schema";
-import { CountryRepository } from "./country.repository";
+interface Project {
+  name: string;
+  price: string;
+  description: string;
+}
 
 @Injectable()
-export class CountryService{
-    constructor(private readonly countryRepository: CountryRepository) {}
+export class ProjectService {
+  project(ProjectDto: ProjectDto): any {
+    throw new Error('Method not implemented.');
+  }
 
-    async getCountryById(CountryId: string): Promise<Country> {
-        return this.countryRepository.findOne({ CountryId })
-    }
+  constructor(
+    @InjectModel('project') private ProjectModule: Model<ProjectModule>,
+  ) {}
 
-    async getCountry(): Promise<Country[]> {
-        return this.countryRepository.find({});
-    }
+  async Project(project: Project) {
+    const CreateProject = new this.ProjectModule({
+      name: project.name,
+      price: project.price,
+      description: project.description,
+    });
 
-    async createCountry(name: string): Promise<Country> {
-        return this.countryRepository.create({
-            countryId: uuidv4(),
-            name
-        })
+    CreateProject.save();
+    try {
+      await CreateProject.save();
+      console.log('dataSave', CreateProject);
+    } catch (error) {
+      if (error.message.includes('name')) {
+        throw new HttpException('name has been taken', 404);
+      }
+      if (error.message.includes('price')) {
+        throw new HttpException('price has been taken', 404);
+      }
+      if (error.message.includes('description')) {
+        throw new HttpException('description has been taken', 404);
+      }
     }
-
-    async updateCountry(CountryId: string, CountryUpdates: UpdateCountryDto): Promise<Country> {
-        return this.countryRepository.findOneAndUpdate({ CountryId }, CountryUpdates);
-    }
+  }
 }

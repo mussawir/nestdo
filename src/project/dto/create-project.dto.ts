@@ -1,4 +1,4 @@
-export class CreateCountryDto {
+export class CreateProjectDto {
     name: string;
-    countryId:string;
+    projectId:string;
 }
