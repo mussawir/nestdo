@@ -20,3 +20,8 @@ export class ProjectRepository {
         const newProject = new this.ProjectModel(Project);
         return newProject.save()
     }
+
+    async findOneAndUpdate(ProjectFilterQuery: FilterQuery<Project>, Project: Partial<Project>): Promise<Project> {
+        return this.ProjectModel.findOneAndUpdate(ProjectFilterQuery, Project, { new: true });
+    }
+}

@@ -7,85 +7,8 @@ export type ProjectDocument = Project & Document;
 export class Project {
     @Prop()
     projectId:string;
-    
-    @Prop({ required: false })
-    title: string
-    
-    @Prop({ required: false })
-    subTitle: string;
-
-    @Prop({ required: false })
-    description: string;
-    
-    @Prop({ required: false })
-    risksChallenges: string;
-    
-    @Prop({ required: false })
-    image: string;
-    
-    @Prop({ required: false })
-    video: string;
-    
-    @Prop({ required: false })
-    websiteUrl: string;
-    
-    @Prop({ required: false })
-    targetAmount: string;
-    
-    @Prop({ required: false })
-    investorShare: string;
-    
-    @Prop({ required: false })
-    targetLaunchDate: string;
-    
-    @Prop({ required: false })
-    cDFixed: string;
-    
-    @Prop({ required: false })
-    duration: string;
-    
-    @Prop({ required: false })
-    popId: string;
-    
-    @Prop({ required: false })
-    profileId: string;
-    
-    @Prop({ required: false })
-    ivProfileUrl: string;
-    
-    @Prop({ required: false })
-    paymentEmail: string;
-    
-    @Prop({ required: false })
-    paymentPtype: string;
-    
-    @Prop({ required: false })
-    type: string;
-    
-    @Prop({ required: false })
-    bankAccount: string;
-    
-    @Prop({ required: false })
-    payments: string;
-    
-    @Prop({ required: false })
-    varified: number;
-    
-    @Prop({ required: false })
-    categoryId: string;
-    
-    @Prop({ required: false })
-    subcategoryId: string;
-    
-    @Prop({ required: false })
-    countryId: string;
-    
-    @Prop({ required: false })
-    createdDate: string;
-    
-    @Prop({ required: false })
-    updatedDate: string;
-  
+    @Prop()
+    name: string;
 }
 
 export const ProjectSchema = SchemaFactory.createForClass(Project);

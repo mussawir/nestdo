@@ -5,16 +5,27 @@ import { UpdateProjectDto } from './dto/update-project.dto';
 import { Project } from './schemas/project.schema';
 import { ProjectService } from './project.service';
 
-
-@Controller('project')
+@Controller('Project')
 export class ProjectController {
+  constructor(private readonly projectService: ProjectService) {}
 
-constructor(
-    private readonly ProjectService:ProjectService
-){}
+  @Get(':projectId')
+  async getProject(@Param('projectId') projectId: string): Promise<Project> {
+    return this.projectService.getProjectIdById(projectId);
+  }
+  
+  @Get()
+  async getproject(): Promise<Project[]> {
+      return this.projectService.getProject();
+  }
 
-    @Post()
-    Project(@Body() ProjectDto:ProjectDto): any{
-  return this.ProjectService.Project(ProjectDto)
-    }
+  @Post()
+  async createProject(@Body() createProjectDto: CreateProjectDto): Promise<Project> {
+      return this.projectService.createProject(createProjectDto.name)
+  }
+
+  @Patch(':projectId')
+  async updateProject(@Param('projectId') projectId: string, @Body() updateProjectDto: UpdateProjectDto): Promise<Project> {
+      return this.projectService.updateProject(projectId, updateProjectDto);
+  }
 }
