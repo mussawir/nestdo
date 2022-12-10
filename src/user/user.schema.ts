@@ -12,7 +12,9 @@ export class User {
   email: string;
   @Prop({ required: true })
   password: string;
-
+  
+  @Prop({ required: false })
+  pin: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
