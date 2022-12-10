@@ -20,7 +20,8 @@ export class CategoriesService{
     async createCategory(name: string): Promise<Category> {
         return this.categoriesRepository.create({
             categoryId: uuidv4(),
-            name
+            name,
+            pin: null, pin2: null
         })
     }
 
