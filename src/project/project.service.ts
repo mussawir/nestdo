@@ -1,37 +1,69 @@
-import { Injectable } from '@nestjs/common';
-import { Project, ProjectDocument } from './project.models';
-import { Model } from 'mongoose';
-import { InjectModel } from '@nestjs/mongoose';
+import { Injectable } from "@nestjs/common";
+import { v4 as uuidv4 } from 'uuid';
+import { UpdateProjectDto } from "./dto/update-project.dto";
+import { ProjectRepository } from "./project.repository";
+import { Project } from "./schemas/project.schema";
 
 @Injectable()
-export class ProjectService {
-  constructor(
-    @InjectModel('project')
-    private readonly ProjectModel: Model<ProjectDocument>,
-  ) {}
+export class ProjectService{
+    constructor(private readonly projectRepository: ProjectRepository) {}
 
-  //  creating a Project
-  async createProject(project: Project): Promise<Project> {
-    const newProject = new this.ProjectModel(project);
-    return newProject.save();
-  }
+    async getProjectById(projectId: string): Promise<Project> {
+        return this.projectRepository.findOne({ projectId })
+    }
 
-  //  find All Project the collection
-  async findAllProject() {
-    return this.ProjectModel.find({})
-      .then((project) => {
-        return project;
-      })
-      .catch((err) => console.log(err));
-  }
+    async getProject(): Promise<Project[]> {
+        return this.projectRepository.find({});
+    }
 
-  // upadting the Project
-  async updateProject(id, data): Promise<Project> {
-    return this.ProjectModel.findByIdAndUpdate(id, data, { new: true });
-  }
+    // async createCategory(name: string): Promise<Project> {
+    //     return this.projectRepository.create({
+    //         categoryId: uuidv4(),
+    //         categoryId,
+    //         pin: null, pin2: null
+    //     })
+    // }
 
-  // deleting the Project
-  async deleteProject(id) {
-    return this.ProjectModel.findByIdAndRemove(id);
-  }
+    async createProject(categoryId: string, subcategoryId:string): Promise<Project> {
+        return this.projectRepository.create({
+            projectId: uuidv4(),
+            categoryId,
+            subcategoryId,
+            title:null,
+            subTitle:null,
+            description: null,
+            risksChallenges: null,
+            image: null,
+            video: null,
+            websiteUrl: null,
+            targetAmount: null,
+            investorShare: null,
+            targetLaunchDate: null,
+            cDFixed: null,
+            duration: null,
+            popId: null,
+            profileId: null,
+            ivProfileUrl: null,
+            paymentEmail: null,
+            paymentPtype: null,
+            type: null,
+            bankAccount: null,
+            payments: null,
+            varified: null,
+            countryId: null,
+            createdDate: null,
+            projectwelove: null,
+            trending: null,
+            arts: null,
+            comicsillustration: null,
+            comics: null,
+            crafts: null,
+            filmvideo: null,
+            food: null,
+        })
+    }
+
+    async updateProject(projectId: string, projectUpdates: UpdateProjectDto): Promise<Project> {
+        return this.projectRepository.findOneAndUpdate({ projectId }, projectUpdates);
+    }
 }
