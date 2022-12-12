@@ -1,40 +1,38 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-} from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { CreateProjectDto } from './dto/create-project.dto';
+import { UpdateProjectDto } from './dto/update-project.dto';
+
+import { Project } from './schemas/project.schema';
 import { ProjectService } from './project.service';
-import { Project } from './project.models';
-import { ProjectUpdateDto } from './projectUpdate.dto';
 
 @Controller('project')
 export class ProjectController {
   constructor(private readonly projectService: ProjectService) {}
 
-  @Post()
-  async createProject(@Body() projectDto: Project) {
-    return this.projectService.createProject(projectDto);
+  @Get(':projectId')
+  async getproject(@Param('projectId') projectId: string): Promise<Project> {
+    return this.projectService.getProjectById(projectId);
   }
-
+  
   @Get()
-  findAllProject() {
-    return this.projectService.findAllProject();
+  async getProject(): Promise<Project[]> {
+      return this.projectService.getProject();
   }
 
-  @Put(':id')
-  async updateProject(
-    @Param('id') id: string,
-    @Body() updateData: ProjectUpdateDto,
-  ): Promise<Project> {
-    return this.projectService.updateProject(id, updateData);
+  @Post('create-project')
+  async createProject(@Body() createProjectDto: CreateProjectDto): Promise<Project> {
+      return this.projectService.createProject(createProjectDto.categoryId,createProjectDto.subcategoryId,)
   }
 
-  @Delete(':id')
-  async deleteProject(@Param('id') id: string) {
-    return this.projectService.deleteProject(id);
+
+  // @Post()
+  // async createProject(@Body() createProjectDto: Project){
+  //   //console.log()
+  //   return this.projectService.createProject(createProjectDto)
+  // }
+
+  @Patch(':projectId')
+  async updateProject(@Param('projectId') projectId: string, @Body() updateProjectDto: UpdateProjectDto): Promise<Project> {
+      return this.projectService.updateProject(projectId, updateProjectDto);
   }
 }
