@@ -6,6 +6,7 @@ import { UpdateLocationDto } from './dto/up-location.dto';
 
 import { Project } from './schemas/project.schema';
 import { ProjectService } from './project.service';
+import { UpdateBasicDto } from './dto/up-basic.dto';
 
 @Controller('project')
 export class ProjectController {
@@ -35,6 +36,11 @@ export class ProjectController {
   @Patch('/location/:projectId')
   async updateLocation(@Param('projectId') projectId: string, @Body() updateLocationDto: UpdateLocationDto): Promise<Project> {
       return this.projectService.updateLocation(projectId, updateLocationDto);
+  }
+
+  @Patch('/basic/:projectId')
+  async updateBasic(@Param('projectId') projectId: string, @Body() updateBasicDto: UpdateBasicDto): Promise<Project> {
+      return this.projectService.updateBasic(projectId, updateBasicDto);
   }
 
 //   Patch (Update) 
