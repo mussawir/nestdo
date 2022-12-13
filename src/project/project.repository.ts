@@ -33,4 +33,21 @@ export class ProjectRepository {
     async updateBasic(ProjectFilterQuery: FilterQuery<Project>, Project: Partial<Project>): Promise<Project> {
         return this.ProjectModel.findOneAndUpdate(ProjectFilterQuery, Project, { new: true });
     }
+
+    
+    async updateFunding(ProjectFilterQuery: FilterQuery<Project>, Project: Partial<Project>): Promise<Project> {
+        return this.ProjectModel.findOneAndUpdate(ProjectFilterQuery, Project, { new: true });
+    }
+
+    async updateStory(ProjectFilterQuery: FilterQuery<Project>, Project: Partial<Project>): Promise<Project> {
+        return this.ProjectModel.findOneAndUpdate(ProjectFilterQuery, Project, { new: true });
+    }
+
+    async updateMyteam(ProjectFilterQuery: FilterQuery<Project>, Project: Partial<Project>): Promise<Project> {
+        return this.ProjectModel.findOneAndUpdate(ProjectFilterQuery, Project, { new: true });
+    }
+
+    async updatePaymentMethod(ProjectFilterQuery: FilterQuery<Project>, Project: Partial<Project>): Promise<Project> {
+        return this.ProjectModel.findOneAndUpdate(ProjectFilterQuery, Project, { new: true });
+    }
 }

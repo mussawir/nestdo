@@ -7,6 +7,9 @@ import { UpdateLocationDto } from './dto/up-location.dto';
 import { Project } from './schemas/project.schema';
 import { ProjectService } from './project.service';
 import { UpdateBasicDto } from './dto/up-basic.dto';
+import { UpdateStoryDto } from './dto/up-story.dto';
+import { UpdateMyteamDto } from './dto/up-myteam.dto';
+import { UpdatePaymentMethodDto } from './dto/up-paymentmethod.dto';
 
 @Controller('project')
 export class ProjectController {
@@ -37,15 +40,36 @@ export class ProjectController {
   async updateLocation(@Param('projectId') projectId: string, @Body() updateLocationDto: UpdateLocationDto): Promise<Project> {
       return this.projectService.updateLocation(projectId, updateLocationDto);
   }
-
+//Basic Update
   @Patch('/basic/:projectId')
   async updateBasic(@Param('projectId') projectId: string, @Body() updateBasicDto: UpdateBasicDto): Promise<Project> {
       return this.projectService.updateBasic(projectId, updateBasicDto);
   }
+//Funding Update
+  @Patch('/funding/:projectId')
+  async updateFunding(@Param('projectId') projectId: string, @Body() updateBasicDto: UpdateBasicDto): Promise<Project> {
+      return this.projectService.updateBasic(projectId, updateBasicDto);
+  }
 
-//   Patch (Update) 
-// 1. Title, subtitle 
-// 2. 
+  //Story Update
+  @Patch('/story/:projectId')
+  async updateStory(@Param('projectId') projectId: string, @Body() updateStoryDto: UpdateStoryDto): Promise<Project> {
+      return this.projectService.updateStory(projectId, updateStoryDto);
+  }
 
-  
+   //Myteam Update
+   @Patch('/myteam/:projectId')
+   async updateMyteam(@Param('projectId') projectId: string, @Body() updateMyteamDto: UpdateMyteamDto): Promise<Project> {
+       return this.projectService.updateMyteam(projectId, updateMyteamDto);
+   }
+
+    //PaymentMethod Update
+    @Patch('/payment/:projectId')
+    async updatePaymentMethod(@Param('projectId') projectId: string, @Body() updatePaymentMethodDto: UpdatePaymentMethodDto): Promise<Project> {
+        return this.projectService.updatePaymentMethod(projectId, updatePaymentMethodDto);
+    }
+
+ 
+
+    
 }
