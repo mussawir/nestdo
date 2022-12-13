@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { v4 as uuidv4 } from 'uuid';
 import { UpdateProjectDto } from "./dto/update-project.dto";
 import { UpdateLocationDto } from "./dto/up-location.dto";
+import { UpdateBasicDto } from "./dto/up-basic.dto";
 
 import { ProjectRepository } from "./project.repository";
 import { Project } from "./schemas/project.schema";
@@ -73,5 +74,9 @@ export class ProjectService{
 
     async updateLocation(projectId: string, updateLocation: UpdateLocationDto): Promise<Project> {
         return this.projectRepository.updateLocation({ projectId }, updateLocation);
+    }
+
+    async updateBasic(projectId: string, updateBasic: UpdateBasicDto): Promise<Project> {
+        return this.projectRepository.updateBasic({ projectId }, updateBasic);
     }
 }
