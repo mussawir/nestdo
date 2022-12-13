@@ -6,6 +6,10 @@ import { UpdateBasicDto } from "./dto/up-basic.dto";
 
 import { ProjectRepository } from "./project.repository";
 import { Project } from "./schemas/project.schema";
+import { UpdateFundingDto } from './dto/up-funding.dto';
+import { UpdateStoryDto } from "./dto/up-story.dto";
+import { UpdateMyteamDto } from './dto/up-myteam.dto';
+import { UpdatePaymentMethodDto } from "./dto/up-paymentmethod.dto";
 
 @Injectable()
 export class ProjectService{
@@ -78,5 +82,21 @@ export class ProjectService{
 
     async updateBasic(projectId: string, updateBasic: UpdateBasicDto): Promise<Project> {
         return this.projectRepository.updateBasic({ projectId }, updateBasic);
+    }
+
+    async updateFunding(projectId: string, updateFunding: UpdateFundingDto): Promise<Project> {
+        return this.projectRepository.updateFunding({ projectId }, updateFunding);
+    }
+
+    async updateStory(projectId: string, updateStory: UpdateStoryDto): Promise<Project> {
+        return this.projectRepository.updateStory({ projectId }, updateStory);
+    }
+
+    async updateMyteam(projectId: string, updateMyteam: UpdateMyteamDto): Promise<Project> {
+        return this.projectRepository.updateMyteam({ projectId }, updateMyteam);
+    }
+
+    async updatePaymentMethod(projectId: string, updatePaymentMethod: UpdatePaymentMethodDto): Promise<Project> {
+        return this.projectRepository.updatePaymentMethod({ projectId }, updatePaymentMethod);
     }
 }
