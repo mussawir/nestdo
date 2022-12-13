@@ -25,4 +25,8 @@ export class ProjectRepository {
     async findOneAndUpdate(ProjectFilterQuery: FilterQuery<Project>, Project: Partial<Project>): Promise<Project> {
         return this.ProjectModel.findOneAndUpdate(ProjectFilterQuery, Project, { new: true });
     }
+
+    async updateLocation(ProjectFilterQuery: FilterQuery<Project>, Project: Partial<Project>): Promise<Project> {
+        return this.ProjectModel.findOneAndUpdate(ProjectFilterQuery, Project, { new: true });
+    }
 }

@@ -110,6 +110,9 @@ export class Project {
 
     @Prop({default: Date.now})
     createdDate: string;
+
+    @Prop({default: Date.now})
+    updatedDate: string;
 }
 
 
