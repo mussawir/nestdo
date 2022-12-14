@@ -23,6 +23,9 @@ import { UpdateStoryDto } from './dto/up-story.dto';
 import { UpdateMyteamDto } from './dto/up-myteam.dto';
 import { UpdatePaymentMethodDto } from './dto/up-paymentmethod.dto';
 import { diskStorage } from 'multer';
+import { extname } from 'path';
+import aws from "aws-sdk";
+
 
 @Controller('project')
 export class ProjectController {
@@ -89,12 +92,28 @@ export class ProjectController {
       return file;
     }
 
-    @Post('/file')
-  @UseInterceptors(FileInterceptor('file'))
-  handleUpload(@UploadedFile() file: Express.Multer.File){
-    console.log('file', file);
-    return 'File Upload API'    
- 
-  }
-    
+   
+    @Post('fileupload')
+    @UseInterceptors(FileInterceptor('file'))
+    fileUpload(@UploadedFile() file: Express.Multer.File) {
+      const s3 = new aws.S3({
+        endpoint: "nyc3.digitaloceanspaces.com",
+        accessKeyId: "DO00FM4ZCTYDCCMRHGTU",
+        secretAccessKey: "agrtXp8vSvQwyw3wuYvpQUXI8QFttVGHK8cSXacy9es",
+      });
+      s3.upload({
+        Bucket: "ivspace", // Add bucket name here
+        ACL: "public-read", // Specify whether anyone with link can access the file
+        Key: `${file.fieldname}/${file.filename}`, // Specify folder and file name
+        Body: file,
+      }, {
+        partSize: 10 * 1024 * 1024,
+        queueSize: 10,
+      }).send((err, data) => {
+        if (err) return "Error";
+        });
+      console.log(file);
+      return file;
+    }
+
 }

@@ -24,7 +24,7 @@ import { MulterModule } from '@nestjs/platform-express/multer';
     CategoriesModule ,
   //  SubCategoriesModule,
     CountryModule,
-    MulterModule.register({dest: './uploads'})
+    // MulterModule.register({dest: './uploads'})
   ],
   controllers: [AppController],
   providers: [AppService],
