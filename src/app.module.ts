@@ -6,9 +6,10 @@ import { AuthModule } from './auth/auth.module';
 import { IvModule } from './iv/iv.module';
 import { UserModule } from './user/user.module';
 import {CategoriesModule} from './categories/categories.module'
-import { SubCategoriesModule } from './subCategories/subcategories.module';
+//import { SubCategoriesModule } from './subCategories/subcategories.module';
 import { ProjectModule } from './project/project.module';
 import { CountryModule } from './Country/country.module';
+import { MulterModule } from '@nestjs/platform-express/multer';
 
 
 @Module({
@@ -21,8 +22,9 @@ import { CountryModule } from './Country/country.module';
     UserModule,
     AuthModule,
     CategoriesModule ,
-    SubCategoriesModule,
+  //  SubCategoriesModule,
     CountryModule,
+    // MulterModule.register({dest: './uploads'})
   ],
   controllers: [AppController],
   providers: [AppService],
