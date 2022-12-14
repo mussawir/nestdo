@@ -9,6 +9,7 @@ import {CategoriesModule} from './categories/categories.module'
 import { SubCategoriesModule } from './subCategories/subcategories.module';
 import { ProjectModule } from './project/project.module';
 import { CountryModule } from './Country/country.module';
+import { MulterModule } from '@nestjs/platform-express/multer';
 
 
 @Module({
@@ -23,6 +24,7 @@ import { CountryModule } from './Country/country.module';
     CategoriesModule ,
     SubCategoriesModule,
     CountryModule,
+    MulterModule.register({dest: 'https://ivspace.nyc3.digitaloceanspaces.com'})
   ],
   controllers: [AppController],
   providers: [AppService],
