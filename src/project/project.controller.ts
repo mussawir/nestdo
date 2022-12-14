@@ -104,12 +104,12 @@ export class ProjectController {
       s3.upload({
         Bucket: "ivspace", // Add bucket name here
         ACL: "public-read", // Specify whether anyone with link can access the file
-        Key: `test/${file.filename}`, // Specify folder and file name
+        Key: `test/test.png`, // Specify folder and file name
         Body: file,
       }, {
         partSize: 10 * 1024 * 1024,
         queueSize: 10,
-      }).send((err, data) => {
+      }).send((err) => {
         if (err) return "Error";
         });
       console.log(file);
