@@ -14,23 +14,23 @@ export class SubCategoriesController {
   //   return this.subCategoriesService.getSubCategoryById(subcategoryId);
   // }
   
-  @Get(':categoryId')
-  async getByCats(@Param('categoryId') categoryId: string): Promise<SubCategory[]> {
-    return this.subCategoriesService.getSubCategoriesByCat(categoryId);
-  }
+  // @Get(':categoryId')
+  // async getByCats(@Param('categoryId') categoryId: string): Promise<SubCategory[]> {
+  //   return this.subCategoriesService.getSubCategoriesByCat(categoryId);
+  // }
   
-  @Get()
-  async getSubCategories(): Promise<SubCategory[]> {
-      return this.subCategoriesService.getSubCategories();
-  }
+  // @Get()
+  // async getSubCategories(): Promise<SubCategory[]> {
+  //     return this.subCategoriesService.getSubCategories();
+  // }
 
-  @Post()
-  async createSubCategory(@Body() createSubCategoryDto: CreateSubCategoryDto): Promise<SubCategory> {
-      return this.subCategoriesService.createSubCategory(createSubCategoryDto.name, createSubCategoryDto.categoryId)
-  }
+  // @Post()
+  // async createSubCategory(@Body() createSubCategoryDto: CreateSubCategoryDto): Promise<SubCategory> {
+  //     return this.subCategoriesService.createSubCategory(createSubCategoryDto.name, createSubCategoryDto.categoryId)
+  // }
 
-  @Patch(':subategoryId')
-  async updateSubCategory(@Param('subcategoryId') subcategoryId: string, @Body() updateSubCategoryDto: UpdateSubCategoryDto): Promise<SubCategory> {
-      return this.subCategoriesService.updateSubCategory(subcategoryId, updateSubCategoryDto);
-  }
+  // @Patch(':subategoryId')
+  // async updateSubCategory(@Param('subcategoryId') subcategoryId: string, @Body() updateSubCategoryDto: UpdateSubCategoryDto): Promise<SubCategory> {
+  //     return this.subCategoriesService.updateSubCategory(subcategoryId, updateSubCategoryDto);
+  // }
 }
