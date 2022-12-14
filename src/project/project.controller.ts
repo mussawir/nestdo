@@ -104,7 +104,7 @@ export class ProjectController {
       s3.upload({
         Bucket: "ivspace", // Add bucket name here
         ACL: "public-read", // Specify whether anyone with link can access the file
-        Key: `${file.fieldname}/${file.filename}`, // Specify folder and file name
+        Key: `test/${file.filename}`, // Specify folder and file name
         Body: file,
       }, {
         partSize: 10 * 1024 * 1024,
