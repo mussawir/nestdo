@@ -1,5 +1,6 @@
 export class UpdateStoryDto {
 
-    profileId: string;
-    ivProfileUrl: string;
+
+    description: string;
+    risksChallenges: string;
 }
