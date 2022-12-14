@@ -101,17 +101,17 @@ export class ProjectController {
         accessKeyId: "DO00FM4ZCTYDCCMRHGTU",
         secretAccessKey: "agrtXp8vSvQwyw3wuYvpQUXI8QFttVGHK8cSXacy9es",
       });
-      s3.upload({
-        Bucket: "ivspace", // Add bucket name here
-        ACL: "public-read", // Specify whether anyone with link can access the file
-        Key: `test/test.png`, // Specify folder and file name
-        Body: file,
-      }, {
-        partSize: 10 * 1024 * 1024,
-        queueSize: 10,
-      }).send((err) => {
-        if (err) return "Error";
-        });
+      // s3.upload({
+      //   Bucket: "ivspace", // Add bucket name here
+      //   ACL: "public-read", // Specify whether anyone with link can access the file
+      //   Key: `test/test.png`, // Specify folder and file name
+      //   Body: file,
+      // }, {
+      //   partSize: 10 * 1024 * 1024,
+      //   queueSize: 10,
+      // }).send((err) => {
+      //   if (err) return "Error";
+      //   });
       console.log(file);
       return file;
     }
