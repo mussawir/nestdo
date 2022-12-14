@@ -24,7 +24,7 @@ import { MulterModule } from '@nestjs/platform-express/multer';
     CategoriesModule ,
   //  SubCategoriesModule,
     CountryModule,
-    MulterModule.register({dest: 'https://ivspace.nyc3.digitaloceanspaces.com/test'})
+    MulterModule.register({dest: './uploads'})
   ],
   controllers: [AppController],
   providers: [AppService],
