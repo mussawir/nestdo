@@ -1,14 +1,31 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+// import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import {
+    Body,
+    Controller,
+    Get,
+    ParseFilePipeBuilder,
+    Post,
+    UploadedFile,
+    UseInterceptors,
+    Param, 
+    Patch,
+    Req
+  } from '@nestjs/common';
+// import { FileInterceptor } from '@nestjs/platform-express';
+// import { Express } from 'express';
 import { CreateProjectDto } from './dto/create-project.dto';
+
 import { UpdateLocationDto } from './dto/up-location.dto';
-
-
 import { Project } from './schemas/project.schema';
 import { ProjectService } from './project.service';
 import { UpdateBasicDto } from './dto/up-basic.dto';
 import { UpdateStoryDto } from './dto/up-story.dto';
 import { UpdateMyteamDto } from './dto/up-myteam.dto';
 import { UpdatePaymentMethodDto } from './dto/up-paymentmethod.dto';
+// import { diskStorage } from 'multer';
+// import { extname } from 'path';
+// import aws from "aws-sdk";
+
 
 @Controller('project')
 export class ProjectController {
@@ -68,7 +85,5 @@ export class ProjectController {
         return this.projectService.updatePaymentMethod(projectId, updatePaymentMethodDto);
     }
 
- 
 
-    
 }
