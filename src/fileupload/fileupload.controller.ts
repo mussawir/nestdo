@@ -41,7 +41,6 @@ export class FileUploadController {
     }),
   )
   async uploadedFile(@UploadedFile() file) {
-    return "working";
     const response = {
       originalname: file.originalname,
       filename: file.filename,
