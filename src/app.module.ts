@@ -6,11 +6,11 @@ import { AuthModule } from './auth/auth.module';
 import { IvModule } from './iv/iv.module';
 import { UserModule } from './user/user.module';
 import {CategoriesModule} from './categories/categories.module'
-//import { SubCategoriesModule } from './subCategories/subcategories.module';
+// import { SubCategoriesModule } from './subcategories/subcategories.module';
 import { ProjectModule } from './project/project.module';
 import { CountryModule } from './Country/country.module';
 import { MulterModule } from '@nestjs/platform-express/multer';
-
+import { ImageUploadModule } from './imageupload/imageupload.module';
 
 @Module({
   imports: [
@@ -22,8 +22,9 @@ import { MulterModule } from '@nestjs/platform-express/multer';
     UserModule,
     AuthModule,
     CategoriesModule ,
-  //  SubCategoriesModule,
+    // SubCategoriesModule,
     CountryModule,
+    ImageUploadModule
     // MulterModule.register({dest: './uploads'})
   ],
   controllers: [AppController],
