@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { UpdateProjectDto } from "./dto/update-project.dto";
 import { UpdateLocationDto } from "./dto/up-location.dto";
 import { UpdateBasicDto } from "./dto/up-basic.dto";
-
+import { UpdateBasicFileDto } from './dto/up-basic-file.dto';
 import { ProjectRepository } from "./project.repository";
 import { Project } from "./schemas/project.schema";
 import { UpdateFundingDto } from './dto/up-funding.dto';
@@ -82,6 +82,10 @@ export class ProjectService{
 
     async updateBasic(projectId: string, updateBasic: UpdateBasicDto): Promise<Project> {
         return this.projectRepository.updateBasic({ projectId }, updateBasic);
+    }
+
+    async updateBasicFile(projectId: string, updateBasicFile: UpdateBasicFileDto): Promise<Project> {
+        return this.projectRepository.updateBasicFile({ projectId }, updateBasicFile);
     }
 
     async updateFunding(projectId: string, updateFunding: UpdateFundingDto): Promise<Project> {
