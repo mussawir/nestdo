@@ -24,6 +24,10 @@ import { editFileName, imageFileFilter } from 'src/utils/file-upload.utils';
 import { UpdateStoryDto } from './dto/up-story.dto';
 import { UpdateMyteamDto } from './dto/up-myteam.dto';
 import { UpdatePaymentMethodDto } from './dto/up-paymentmethod.dto';
+import { FileInterceptor, MulterModule } from '@nestjs/platform-express/multer';
+import { diskStorage } from 'multer';
+import { editFileName, imageFileFilter } from 'src/utils/file-upload.utils';
+import { FileUploadService } from './fileupload.service'
 // import { diskStorage } from 'multer';
 // import { extname } from 'path';
 // import aws from "aws-sdk";
@@ -66,6 +70,15 @@ export class ProjectController {
 
 //Basic Update with file upload 
 @Patch('/basicfile/:projectId')
+@UseInterceptors(
+  FileInterceptor('image', {
+    storage: diskStorage({
+      destination: './files',
+      filename: editFileName,
+    }),
+    fileFilter: imageFileFilter,
+  }),
+)
 async updateBasicfile(@Param('projectId') projectId: string, @Body() updateBasicFileDto: UpdateBasicFileDto): Promise<Project> {
     return this.projectService.updateBasicFile(projectId, updateBasicFileDto);
 }
