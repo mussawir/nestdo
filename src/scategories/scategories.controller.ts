@@ -1,15 +1,17 @@
 import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
-// import { SubCategory } from './schemas/subcategories.schema';
-// import { SubCategoriesService } from './subCategories.service';
+import { CreateSubCategoryDto } from './dto/create-subcategories.dto';
+import { UpdateSubCategoryDto } from './dto/update-subcategories.dto';
+import { SubCategory } from './schemas/subcategories.schema';
+import { SCategoriesService } from './scategories.service';
 
 @Controller('scategories')
 export class SCategoriesController {
-  // constructor(private readonly subCategoriesService: SubCategoriesService) {}
+  constructor(private readonly subCategoriesService: SubCategoriesService) {}
 
-  // @Get(':subcategoryId')
-  // async getSubCategory(@Param('subcategoryId') subcategoryId: string): Promise<SubCategory> {
-  //   return this.subCategoriesService.getSubCategoryById(subcategoryId);
-  // }
+  @Get(':subcategoryId')
+  async getSubCategory(@Param('subcategoryId') subcategoryId: string): Promise<SubCategory> {
+    return this.subCategoriesService.getSubCategoryById(subcategoryId);
+  }
   
   // @Get(':categoryId')
   // async getByCats(@Param('categoryId') categoryId: string): Promise<SubCategory[]> {
