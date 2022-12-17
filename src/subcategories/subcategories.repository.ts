@@ -1,7 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { FilterQuery, Model } from "mongoose";
-
 import { SubCategory, SubCategoryDocument } from "./schemas/subcategories.schema";
 
 @Injectable()
