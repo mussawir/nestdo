@@ -12,23 +12,23 @@ export class SCategoriesService{
         return this.subCategoriesRepository.findOne({ subcategoryId })
     }
 
-    // async getSubCategoriesByCat(categoryId: string): Promise<SubCategory[]> {
-    //     return this.subCategoriesRepository.findByCat({ categoryId })
-    // }
+    async getSubCategoriesByCat(categoryId: string): Promise<SubCategory[]> {
+        return this.subCategoriesRepository.findByCat({ categoryId })
+    }
 
-    // async getSubCategories(): Promise<SubCategory[]> {
-    //     return this.subCategoriesRepository.find({});
-    // }
+    async getSubCategories(): Promise<SubCategory[]> {
+        return this.subCategoriesRepository.find({});
+    }
 
-    // async createSubCategory(name: string, categoryId: string): Promise<SubCategory> {
-    //     return this.subCategoriesRepository.create({
-    //         subcategoryId: uuidv4(),
-    //         name,
-    //         categoryId
-    //     })
-    // }
+    async createSubCategory(name: string, categoryId: string): Promise<SubCategory> {
+        return this.subCategoriesRepository.create({
+            subcategoryId: uuidv4(),
+            name,
+            categoryId
+        })
+    }
 
-    // async updateSubCategory(subcategoryId: string, subCategoryUpdates: UpdateSubCategoryDto): Promise<SubCategory> {
-    //     return this.subCategoriesRepository.findOneAndUpdate({ subcategoryId }, subCategoryUpdates);
-    // }
+    async updateSubCategory(subcategoryId: string, subCategoryUpdates: UpdateSubCategoryDto): Promise<SubCategory> {
+        return this.subCategoriesRepository.findOneAndUpdate({ subcategoryId }, subCategoryUpdates);
+    }
 }
