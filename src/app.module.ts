@@ -6,7 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { IvModule } from './iv/iv.module';
 import { UserModule } from './user/user.module';
 import {CategoriesModule} from './categories/categories.module'
-// import { SubCategoriesModule } from './subcategories/subcategories.module';
+import { SCategoriesModule } from './scategories/scategories.module';
 import { ProjectModule } from './project/project.module';
 import { CountryModule } from './Country/country.module';
 import { MulterModule } from '@nestjs/platform-express';
@@ -31,11 +31,10 @@ import { join } from 'path';
     UserModule,
     AuthModule,
     CategoriesModule ,
-    // SubCategoriesModule,
+    SCategoriesModule,
     CountryModule,
     ImageUploadModule,
     FileUploadModule,
-
   ],
   controllers: [AppController],
   providers: [AppService],
