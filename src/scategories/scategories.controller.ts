@@ -1,12 +1,9 @@
 import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
-// import { CreateSubCategoryDto } from './dto/create-subcategories.dto';
-// import { UpdateSubCategoryDto } from './dto/update-subcategories.dto';
-
 // import { SubCategory } from './schemas/subcategories.schema';
 // import { SubCategoriesService } from './subCategories.service';
 
-@Controller('subcategories')
-export class SubCategoriesController {
+@Controller('scategories')
+export class SCategoriesController {
   // constructor(private readonly subCategoriesService: SubCategoriesService) {}
 
   // @Get(':subcategoryId')

@@ -3,11 +3,11 @@ import { Injectable } from "@nestjs/common";
 // import { UpdateSubCategoryDto } from "./dto/update-subcategories.dto";
 
 // import { SubCategory } from "./schemas/subcategories.schema";
-import { SubCategoriesRepository } from "./subCategories.repository";
+// import { SubCategoriesRepository } from "./subCategories.repository";
 
 @Injectable()
-export class SubCategoriesService{
-    constructor(private readonly subCategoriesRepository: SubCategoriesRepository) {}
+export class SCategoriesService{
+    // constructor(private readonly subCategoriesRepository: SubCategoriesRepository) {}
 
     // async getSubCategoryById(subcategoryId: string): Promise<SubCategory> {
     //     return this.subCategoriesRepository.findOne({ subcategoryId })
