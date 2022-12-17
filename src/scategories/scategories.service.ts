@@ -6,11 +6,11 @@ import { SCategoriesRepository } from "./scategories.repository";
 
 @Injectable()
 export class SCategoriesService{
-    // constructor(private readonly subCategoriesRepository: SubCategoriesRepository) {}
+    constructor(private readonly subCategoriesRepository: SCategoriesRepository) {}
 
-    // async getSubCategoryById(subcategoryId: string): Promise<SubCategory> {
-    //     return this.subCategoriesRepository.findOne({ subcategoryId })
-    // }
+    async getSubCategoryById(subcategoryId: string): Promise<SubCategory> {
+        return this.subCategoriesRepository.findOne({ subcategoryId })
+    }
 
     // async getSubCategoriesByCat(categoryId: string): Promise<SubCategory[]> {
     //     return this.subCategoriesRepository.findByCat({ categoryId })
