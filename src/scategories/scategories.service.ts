@@ -1,9 +1,8 @@
 import { Injectable } from "@nestjs/common";
-// import { v4 as uuidv4 } from 'uuid';
-// import { UpdateSubCategoryDto } from "./dto/update-subcategories.dto";
-
-// import { SubCategory } from "./schemas/subcategories.schema";
-// import { SubCategoriesRepository } from "./subCategories.repository";
+import { v4 as uuidv4 } from 'uuid';
+import { UpdateSubCategoryDto } from "./dto/update-subcategories.dto";
+import { SubCategory } from "./schemas/subcategories.schema";
+import { SCategoriesRepository } from "./scategories.repository";
 
 @Injectable()
 export class SCategoriesService{
