@@ -6,7 +6,7 @@ import { SCategoriesService } from './scategories.service';
 
 @Controller('scategories')
 export class SCategoriesController {
-  constructor(private readonly subCategoriesService: SubCategoriesService) {}
+  constructor(private readonly subCategoriesService: SCategoriesService) {}
 
   @Get(':subcategoryId')
   async getSubCategory(@Param('subcategoryId') subcategoryId: string): Promise<SubCategory> {
