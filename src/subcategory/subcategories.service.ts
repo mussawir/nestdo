@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common";
-import { v4 as uuidv4 } from 'uuid';
-import { UpdateSubCategoryDto } from "./dto/update-subcategories.dto";
+// import { v4 as uuidv4 } from 'uuid';
+// import { UpdateSubCategoryDto } from "./dto/update-subcategories.dto";
 
-import { SubCategory } from "./schemas/subcategories.schema";
+// import { SubCategory } from "./schemas/subcategories.schema";
 import { SubCategoriesRepository } from "./subCategories.repository";
 
 @Injectable()

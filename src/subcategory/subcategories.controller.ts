@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
-import { CreateSubCategoryDto } from './dto/create-subcategories.dto';
-import { UpdateSubCategoryDto } from './dto/update-subcategories.dto';
+// import { CreateSubCategoryDto } from './dto/create-subcategories.dto';
+// import { UpdateSubCategoryDto } from './dto/update-subcategories.dto';
 
 // import { SubCategory } from './schemas/subcategories.schema';
 // import { SubCategoriesService } from './subCategories.service';

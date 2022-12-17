@@ -14,5 +14,4 @@ export class SubCategory {
     @Prop()
     categoryId: string;
 }
-
 export const SubCategorySchema = SchemaFactory.createForClass(SubCategory);
