@@ -4,11 +4,11 @@ import { UpdateSubCategoryDto } from './dto/update-subcategories.dto';
 import { SubCategory } from './schemas/subcategories.schema';
 import { SCategoriesService } from './scategories.service';
 
-@Controller('scategories')
+@Controller('subcategories')
 export class SCategoriesController {
   constructor(private readonly subCategoriesService: SCategoriesService) {}
 
-  @Get(':subcategoryId')
+  @Get('/subcat/:subcategoryId')
   async getSubCategory(@Param('subcategoryId') subcategoryId: string): Promise<SubCategory> {
     return this.subCategoriesService.getSubCategoryById(subcategoryId);
   }

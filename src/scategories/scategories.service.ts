@@ -13,6 +13,7 @@ export class SCategoriesService{
     }
 
     async getSubCategoriesByCat(categoryId: string): Promise<SubCategory[]> {
+       // return ['1', '2']: string;
         return this.subCategoriesRepository.findByCat({ categoryId })
     }
 
