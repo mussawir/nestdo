@@ -19,7 +19,7 @@ import { join } from 'path';
 @Module({
   imports: [
     MulterModule.register({
-      dest: './files',
+      dest: './myfiles',
     }), 
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'files'),
