@@ -9,7 +9,8 @@ import {
     UseInterceptors,
     Param, 
     Patch,
-    Req
+    Req,
+    Res
   } from '@nestjs/common';
 // import { FileInterceptor } from '@nestjs/platform-express';
 // import { Express } from 'express';
@@ -26,6 +27,7 @@ import { UpdateMyteamDto } from './dto/up-myteam.dto';
 import { UpdatePaymentMethodDto } from './dto/up-paymentmethod.dto';
 import { FileInterceptor, MulterModule } from '@nestjs/platform-express/multer';
 import { diskStorage } from 'multer';
+import { UpdateImageDto } from './dto/up-image.dto';
 // import { FileUploadService } from './fileupload.service'
 // import { diskStorage } from 'multer';
 // import { extname } from 'path';
@@ -63,12 +65,13 @@ export class ProjectController {
   }
 //Basic Update
   @Patch('/basic/:projectId')
+ 
   async updateBasic(@Param('projectId') projectId: string, @Body() updateBasicDto: UpdateBasicDto): Promise<Project> {
-      return this.projectService.updateBasic(projectId, updateBasicDto);
+    return this.projectService.updateBasic(projectId, updateBasicDto);
   }
 
 //Basic Update with file upload 
-@Patch('/basicfile/:projectId')
+@Post('/basicfile/:projectId')
 @UseInterceptors(
   FileInterceptor('image', {
     storage: diskStorage({
@@ -77,10 +80,33 @@ export class ProjectController {
     }),
     fileFilter: imageFileFilter,
   }),
-)
-async updateBasicfile(@Param('projectId') projectId: string, @Body() updateBasicFileDto: UpdateBasicFileDto): Promise<Project> {
-    return this.projectService.updateBasicFile(projectId, updateBasicFileDto);
+)  async uploadedFile(@UploadedFile() file) {
+  const response = {
+    originalname: file.originalname,
+    filename: file.filename,
+  };
+  return response;
 }
+
+
+// @Patch("/basicfile/:projectId")
+// updateData(): string {
+//   return 'This action returns all Data';
+// }
+  
+
+
+// async updateBasicfile(@UploadedFile() file) {
+//   const response = {
+//     originalname: file.originalname,
+//     filename: file.filename,
+//   };
+//   return response;
+// }
+
+// async updateBasicfile(@Param('projectId') projectId: string, @Body() updateBasicFileDto: UpdateBasicFileDto): Promise<Project> {
+//     return this.projectService.updateBasicFile(projectId, updateBasicFileDto);
+// }
 
 
   //Funding Update
@@ -107,5 +133,9 @@ async updateBasicfile(@Param('projectId') projectId: string, @Body() updateBasic
         return this.projectService.updatePaymentMethod(projectId, updatePaymentMethodDto);
     }
 
-
+ //Image upload and Update
+ @Patch('/updateImage/:projectId')
+ async updateImage(@Param('projectId') projectId: string, @Body() updateImageDto: UpdateImageDto): Promise<Project> {
+     return this.projectService.updateImage(projectId, updateImageDto);
+ }
 }

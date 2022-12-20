@@ -10,10 +10,14 @@ import { UpdateFundingDto } from './dto/up-funding.dto';
 import { UpdateStoryDto } from "./dto/up-story.dto";
 import { UpdateMyteamDto } from './dto/up-myteam.dto';
 import { UpdatePaymentMethodDto } from "./dto/up-paymentmethod.dto";
+import { UpdateImageDto } from "./dto/up-image.dto";
 
 @Injectable()
 export class ProjectService{
-    constructor(private readonly projectRepository: ProjectRepository) {}
+    constructor(private readonly projectRepository: ProjectRepository) {
+
+        
+    }
 
     async getProjectById(projectId: string): Promise<Project> {
         return this.projectRepository.findOne({ projectId })
@@ -40,7 +44,7 @@ export class ProjectService{
             subTitle:null,
             description: null,
             risksChallenges: null,
-            image: null,
+            projectImage: null,
             video: null,
             websiteUrl: null,
             targetAmount: null,
@@ -103,4 +107,10 @@ export class ProjectService{
     async updatePaymentMethod(projectId: string, updatePaymentMethod: UpdatePaymentMethodDto): Promise<Project> {
         return this.projectRepository.updatePaymentMethod({ projectId }, updatePaymentMethod);
     }
+
+    async updateImage(projectId: string, updateImage: UpdateImageDto): Promise<Project> {
+        return this.projectRepository.updateImage({ projectId }, updateImage);
+    }
+ 
+
 }

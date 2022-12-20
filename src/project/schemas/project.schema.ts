@@ -29,7 +29,7 @@ export class Project {
     risksChallenges: string
     
     @Prop({ required: false })
-    image: string
+    projectImage: string
     
     @Prop({ required: false })
     video: string

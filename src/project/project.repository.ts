@@ -53,4 +53,9 @@ export class ProjectRepository {
     async updatePaymentMethod(ProjectFilterQuery: FilterQuery<Project>, Project: Partial<Project>): Promise<Project> {
         return this.ProjectModel.findOneAndUpdate(ProjectFilterQuery, Project, { new: true });
     }
+
+    async updateImage(ProjectFilterQuery: FilterQuery<Project>, Project: Partial<Project>): Promise<Project> {
+        return this.ProjectModel.findOneAndUpdate(ProjectFilterQuery, Project, { new: true });
+    }
+   
 }
