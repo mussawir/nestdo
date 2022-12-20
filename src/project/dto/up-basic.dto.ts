@@ -1,7 +1,7 @@
 export class UpdateBasicDto {
     title: string;
     subTitle: string;
-    image: string;
+    projectImage: string;
     video: string;
     targetLaunchDate:string;
     duration: string;
