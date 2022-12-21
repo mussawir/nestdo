@@ -87,7 +87,12 @@ export class ProjectController {
   };
   return response;
 }
-
+ 
+//Image upload and Update
+ @Patch('/updateImage/:projectId')
+ async updateImage(@Param('projectId') projectId: string, @Body() updateImageDto: UpdateImageDto): Promise<Project> {
+     return this.projectService.updateImage(projectId, updateImageDto);
+ }
 
 // @Patch("/basicfile/:projectId")
 // updateData(): string {
@@ -133,9 +138,5 @@ export class ProjectController {
         return this.projectService.updatePaymentMethod(projectId, updatePaymentMethodDto);
     }
 
- //Image upload and Update
- @Patch('/updateImage/:projectId')
- async updateImage(@Param('projectId') projectId: string, @Body() updateImageDto: UpdateImageDto): Promise<Project> {
-     return this.projectService.updateImage(projectId, updateImageDto);
- }
+
 }
