@@ -27,7 +27,7 @@ import { UpdateMyteamDto } from './dto/up-myteam.dto';
 import { UpdatePaymentMethodDto } from './dto/up-paymentmethod.dto';
 import { FileInterceptor, MulterModule } from '@nestjs/platform-express/multer';
 import { diskStorage } from 'multer';
-import { UpdateImageDto } from './dto/up-image.dto';
+import { UpdateProjectImageDto } from './dto/updateProjectImage.dto';
 // import { FileUploadService } from './fileupload.service'
 // import { diskStorage } from 'multer';
 // import { extname } from 'path';
@@ -89,9 +89,9 @@ export class ProjectController {
 }
  
 //Image upload and Update
- @Patch('/updateImage/:projectId')
- async updateImage(@Param('projectId') projectId: string, @Body() updateImageDto: UpdateImageDto): Promise<Project> {
-     return this.projectService.updateImage(projectId, updateImageDto);
+ @Patch('/updateProjectImage/:projectId')
+ async updateImage(@Param('projectId') projectId: string, @Body() updateProjectImageDto: UpdateProjectImageDto): Promise<Project> {
+     return this.projectService.updateProjectImage(projectId, updateProjectImageDto);
  }
 
 // @Patch("/basicfile/:projectId")
