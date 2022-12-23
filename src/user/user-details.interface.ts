@@ -6,10 +6,18 @@ export class UserDetails {
 
   @IsString()
   @IsNotEmpty()
+    userId: string;
+
+  @IsString()
+  @IsNotEmpty()
   name: string;
 
   @IsString()
   @IsEmail()
   email: string;
+
+
+
+
 
 }

@@ -57,5 +57,9 @@ export class ProjectRepository {
     async updateImage(ProjectFilterQuery: FilterQuery<Project>, Project: Partial<Project>): Promise<Project> {
         return this.ProjectModel.findOneAndUpdate(ProjectFilterQuery, Project, { new: true });
     }
+
+    async updateVideo(ProjectFilterQuery: FilterQuery<Project>, Project: Partial<Project>): Promise<Project> {
+        return this.ProjectModel.findOneAndUpdate(ProjectFilterQuery, Project, { new: true });
+    }
    
 }
