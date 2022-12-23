@@ -10,4 +10,9 @@ export class UserController {
   getUser(@Param('id') id: string): Promise<UserDetails | null> {
     return this.userService.findById(id);
   }
+
+  @Get(':userId')
+   getUserId(@Param('userId') userId: string): Promise<UserDetails | null>  {
+    return this.userService.getUserById(userId);
+  }
 }

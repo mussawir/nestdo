@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-
+import { v4 as uuidv4 } from 'uuid';
 import { Model } from 'mongoose';
 import { UserDetails } from './user-details.interface';
 
@@ -15,8 +15,10 @@ export class UserService {
   _getUserDetails(user: UserDocument): UserDetails {
     return {
       id: user._id,
+      userId:user.userId,
       name: user.name,
-      email: user.email
+      email: user.email,
+   
   
     };
   }
@@ -31,15 +33,24 @@ export class UserService {
     return this._getUserDetails(user);
   }
 
+  async getUserById(userId: string): Promise<UserDetails | null> {
+    const user = await this.userModel.findById(userId).exec();
+    if (!user) return null;
+    return this._getUserDetails(user);
+    // return this.userModel.getUserById({ userId })
+}
+
   async create(
     name: string,
     email: string,
     hashedPassword: string,
+
   ): Promise<UserDocument> {
     const newUser = new this.userModel({
       name,
       email,
       password: hashedPassword,
+      userId:uuidv4(),
     });
     return newUser.save();
   }

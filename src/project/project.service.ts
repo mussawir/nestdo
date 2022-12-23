@@ -11,6 +11,8 @@ import { UpdateStoryDto } from "./dto/up-story.dto";
 import { UpdateMyteamDto } from './dto/up-myteam.dto';
 import { UpdatePaymentMethodDto } from "./dto/up-paymentmethod.dto";
 import { UpdateProjectImageDto } from "./dto/updateProjectImage.dto";
+import { UpdateProjectVideoDto } from "./dto/updateProjectVideo.dto";
+
 
 @Injectable()
 export class ProjectService{
@@ -112,5 +114,8 @@ export class ProjectService{
         return this.projectRepository.updateImage({ projectId }, updateProjectImage);
     }
  
+        async updateProjectVideo(projectId: string, updateProjectVideo: UpdateProjectVideoDto): Promise<Project> {
+        return this.projectRepository.updateVideo({ projectId }, updateProjectVideo);
+    }
 
 }
