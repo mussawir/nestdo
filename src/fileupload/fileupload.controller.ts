@@ -34,12 +34,13 @@ export class FileUploadController {
   @UseInterceptors(
     FileInterceptor('image', {
       storage: diskStorage({
-        destination: './myfiles',
+        destination: './files',
         filename: editFileName,
       }),
       fileFilter: imageFileFilter,
     }),
   )
+
   async uploadedFile(@UploadedFile() file) {
     const response = {
       originalname: file.originalname,

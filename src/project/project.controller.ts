@@ -94,6 +94,30 @@ export class ProjectController {
      return this.projectService.updateProjectImage(projectId, updateProjectImageDto);
  }
 
+//Upload video file  
+@Post('/uploadvideo/:projectId')
+@UseInterceptors(
+  FileInterceptor('video', {
+    storage: diskStorage({
+      destination: './files',
+      filename: editFileName,
+    }),
+    fileFilter: imageFileFilter,
+  }),
+)  async uploadVideo(@UploadedFile() file) {
+  const response = {
+    originalname: file.originalname,
+    filename: file.filename,
+  };
+  return response;
+}
+ 
+//Update Video file name
+ @Patch('/updateProjectVideo/:projectId')
+ async updateVideo(@Param('projectId') projectId: string, @Body() updateProjectImageDto: UpdateProjectImageDto): Promise<Project> {
+     return this.projectService.updateProjectImage(projectId, updateProjectImageDto);
+ }
+
 // @Patch("/basicfile/:projectId")
 // updateData(): string {
 //   return 'This action returns all Data';
