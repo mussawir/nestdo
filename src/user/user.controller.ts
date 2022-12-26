@@ -15,4 +15,5 @@ export class UserController {
    getUserId(@Param('userId') userId: string): Promise<UserDetails | null>  {
     return this.userService.getUserById(userId);
   }
+  
 }

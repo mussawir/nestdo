@@ -37,7 +37,7 @@ export class UserService {
     const user = await this.userModel.findById(userId).exec();
     if (!user) return null;
     return this._getUserDetails(user);
-    // return this.userModel.getUserById({ userId })
+    
 }
 
   async create(
