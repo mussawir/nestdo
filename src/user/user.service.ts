@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { v4 as uuidv4 } from 'uuid';
-import { Model } from 'mongoose';
+import {FilterQuery, Model } from 'mongoose';
 import { UserDetails } from './user-details.interface';
 
 import { UserDocument } from './user.schema';
@@ -23,6 +23,12 @@ export class UserService {
     };
   }
 
+  // Find All Login Data///
+
+async getAllData(): Promise<UserDetails[]> {
+  return this.userModel.find({});
+}
+
   async findByEmail(email: string): Promise<UserDocument | null> {
     return this.userModel.findOne({ email }).exec();
   }
@@ -33,11 +39,10 @@ export class UserService {
     return this._getUserDetails(user);
   }
 
-  async getUserById(userId: string): Promise<UserDetails | null> {
-    const user = await this.userModel.findById(userId).exec();
-    if (!user) return null;
-    return this._getUserDetails(user);
-    
+  /// userId ////////
+
+async getUserById(userId: string): Promise<UserDetails> {
+  return this.userModel.findOne({ userId })
 }
 
   async create(

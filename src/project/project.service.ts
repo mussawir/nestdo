@@ -25,6 +25,10 @@ export class ProjectService{
         return this.projectRepository.findOne({ projectId })
     }
 
+    async getUserIdById(userId: string): Promise<Project> {
+        return this.projectRepository.findOne({ userId })
+    }
+
     async getProject(): Promise<Project[]> {
         return this.projectRepository.find({});
     }
@@ -37,10 +41,11 @@ export class ProjectService{
     //     })
     // }
 
-    async createProject(categoryId: string, subcategoryId:string): Promise<Project> {
+    async createProject(categoryId: string, subcategoryId:string,userId:string): Promise<Project> {
         return this.projectRepository.create({
             projectId: uuidv4(),
             categoryId,
+            userId,
             subcategoryId,
             title:null,
             subTitle:null,

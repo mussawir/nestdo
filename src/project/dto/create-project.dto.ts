@@ -1,6 +1,8 @@
 export class CreateProjectDto {
     projectId: string;
 
+    userId: string;
+
     title: string;
   
     subTitle: string;
