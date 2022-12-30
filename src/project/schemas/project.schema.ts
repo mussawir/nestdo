@@ -11,6 +11,9 @@ export class Project {
     projectId: string;
 
     @Prop()
+    userId:string;
+
+    @Prop()
     categoryId: string
     
     @Prop()

@@ -11,9 +11,19 @@ export class UserController {
     return this.userService.findById(id);
   }
 
+ 
+//userId //////////////
+
   @Get(':userId')
-   getUserId(@Param('userId') userId: string): Promise<UserDetails | null>  {
+  async getuserId(@Param('userId') userId: string): Promise<UserDetails> {
     return this.userService.getUserById(userId);
   }
+
+///Get User all Data///////////
+  @Get()
+  async getAllData(): Promise<UserDetails[]> {
+      return this.userService.getAllData();
+  }
+
   
 }

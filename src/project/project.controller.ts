@@ -44,7 +44,11 @@ export class ProjectController {
   async getproject(@Param('projectId') projectId: string): Promise<Project> {
     return this.projectService.getProjectById(projectId);
   }
-  
+  @Get(':userId')
+  async getUserId(@Param('userId') userId: string): Promise<Project> {
+    return this.projectService.getUserIdById(userId);
+  }
+
   @Get()
   async getProject(): Promise<Project[]> {
       return this.projectService.getProject();
@@ -52,7 +56,7 @@ export class ProjectController {
 
   @Post('create-project')
   async createProject(@Body() createProjectDto: CreateProjectDto): Promise<Project> {
-      return this.projectService.createProject(createProjectDto.categoryId,createProjectDto.subcategoryId,)
+      return this.projectService.createProject(createProjectDto.categoryId,createProjectDto.subcategoryId,createProjectDto.userId)
   }
 
 
