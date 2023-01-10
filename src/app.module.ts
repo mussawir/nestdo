@@ -24,8 +24,8 @@ import { join } from 'path';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'files'),
   }),
-    MongooseModule.forRoot('mongodb+srv://doadmin:v5X4mW98T7aD12Z3@investingverse-1f75c212.mongo.ondigitalocean.com/admin?authSource=admin&replicaSet=investingverse&tls=true'),
-   //  MongooseModule.forRoot('mongodb://localhost:27017/nestproject'),
+    //MongooseModule.forRoot('mongodb+srv://doadmin:v5X4mW98T7aD12Z3@investingverse-1f75c212.mongo.ondigitalocean.com/admin?authSource=admin&replicaSet=investingverse&tls=true'),
+     MongooseModule.forRoot('mongodb://127.0.0.1:27017/nestproject'),
     IvModule,
     ProjectModule,
     UserModule,
