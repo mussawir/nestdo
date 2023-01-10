@@ -11,11 +11,7 @@ export class Category {
     @Prop()
     name: string;
 
-    @Prop({ required: false })
-    pin: string;
-
-    @Prop({ required: false })
-    pin2: string;
+   
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);
