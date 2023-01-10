@@ -44,8 +44,9 @@ export class ProjectController {
   async getproject(@Param('projectId') projectId: string): Promise<Project> {
     return this.projectService.getProjectById(projectId);
   }
-  @Get(':userId')
-  async getUserId(@Param('userId') userId: string): Promise<Project> {
+  
+  @Get('/uplist/:userId')
+  async getUserId(@Param('userId') userId: string) {
     return this.projectService.getUserIdById(userId);
   }
 
