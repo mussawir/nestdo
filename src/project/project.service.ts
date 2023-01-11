@@ -25,8 +25,8 @@ export class ProjectService{
         return this.projectRepository.findOne({ projectId })
     }
 
-    async getUserIdById(userId: string): Promise<Project> {
-        return this.projectRepository.findOne({ userId })
+    async getUserIdById(userId: string): Promise<Project[]> {
+        return this.projectRepository.find({ userId })
     }
 
     async getProject(): Promise<Project[]> {
