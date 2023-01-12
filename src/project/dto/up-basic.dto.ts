@@ -6,5 +6,5 @@ export class UpdateBasicDto {
     targetLaunchDate:string;
     duration: string;
     cDFixed: string;
-    websiteUrl: string;
+
 }
