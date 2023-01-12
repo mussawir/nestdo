@@ -7,5 +7,5 @@ export class UpdateBasicDto {
     duration: string;
     cDFixed: string;
     websiteUrl: string;
-  
+    additional?: string;
 }
