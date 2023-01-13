@@ -1,17 +1,17 @@
 // import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import {
-    Body,
-    Controller,
-    Get,
-    ParseFilePipeBuilder,
-    Post,
-    UploadedFile,
-    UseInterceptors,
-    Param, 
-    Patch,
-    Req,
-    Res
-  } from '@nestjs/common';
+  Body,
+  Controller,
+  Get,
+  ParseFilePipeBuilder,
+  Post,
+  UploadedFile,
+  UseInterceptors,
+  Param,
+  Patch,
+  Req,
+  Res,
+} from '@nestjs/common';
 // import { FileInterceptor } from '@nestjs/platform-express';
 // import { Express } from 'express';
 import { CreateProjectDto } from './dto/create-project.dto';
@@ -35,7 +35,6 @@ import { UpdateProjectVideoDto } from './dto/updateProjectVideo.dto';
 // import { extname } from 'path';
 // import aws from "aws-sdk";
 
-
 @Controller('project')
 export class ProjectController {
   constructor(private readonly projectService: ProjectService) {}
@@ -44,21 +43,27 @@ export class ProjectController {
   async getproject(@Param('projectId') projectId: string): Promise<Project> {
     return this.projectService.getProjectById(projectId);
   }
-  @Get(':userId')
-  async getUserId(@Param('userId') userId: string): Promise<Project> {
+
+  @Get('/uplist/:userId')
+  async getUserId(@Param('userId') userId: string) {
     return this.projectService.getUserIdById(userId);
   }
 
   @Get()
   async getProject(): Promise<Project[]> {
-      return this.projectService.getProject();
+    return this.projectService.getProject();
   }
 
   @Post('create-project')
-  async createProject(@Body() createProjectDto: CreateProjectDto): Promise<Project> {
-      return this.projectService.createProject(createProjectDto.categoryId,createProjectDto.subcategoryId,createProjectDto.userId)
+  async createProject(
+    @Body() createProjectDto: CreateProjectDto,
+  ): Promise<Project> {
+    return this.projectService.createProject(
+      createProjectDto.categoryId,
+      createProjectDto.subcategoryId,
+      createProjectDto.userId,
+    );
   }
-
 
   // @Post()
   // async createProject(@Body() createProjectDto: Project){
@@ -66,107 +71,136 @@ export class ProjectController {
   //   return this.projectService.createProject(createProjectDto)
   // }
   @Patch('/location/:projectId')
-  async updateLocation(@Param('projectId') projectId: string, @Body() updateLocationDto: UpdateLocationDto): Promise<Project> {
-      return this.projectService.updateLocation(projectId, updateLocationDto);
+  async updateLocation(
+    @Param('projectId') projectId: string,
+    @Body() updateLocationDto: UpdateLocationDto,
+  ): Promise<Project> {
+    return this.projectService.updateLocation(projectId, updateLocationDto);
   }
-//Basic Update
+  //Basic Update
   @Patch('/basic/:projectId')
- 
-  async updateBasic(@Param('projectId') projectId: string, @Body() updateBasicDto: UpdateBasicDto): Promise<Project> {
+  async updateBasic(
+    @Param('projectId') projectId: string,
+    @Body() updateBasicDto: UpdateBasicDto,
+  ): Promise<Project> {
     return this.projectService.updateBasic(projectId, updateBasicDto);
   }
 
-//Basic Update with file upload 
-@Post('/basicfile/:projectId')
-@UseInterceptors(
-  FileInterceptor('image', {
-    storage: diskStorage({
-      destination: './files',
-      filename: editFileName,
+  //Basic Update with file upload
+  @Post('/basicfile/:projectId')
+  @UseInterceptors(
+    FileInterceptor('image', {
+      storage: diskStorage({
+        destination: './files',
+        filename: editFileName,
+      }),
+      fileFilter: imageFileFilter,
     }),
-    fileFilter: imageFileFilter,
-  }),
-)  async uploadedFile(@UploadedFile() file) {
-  const response = {
-    originalname: file.originalname,
-    filename: file.filename,
-  };
-  return response;
-}
- 
-//Image upload and Update
- @Patch('/updateProjectImage/:projectId')
- async updateImage(@Param('projectId') projectId: string, @Body() updateProjectImageDto: UpdateProjectImageDto): Promise<Project> {
-     return this.projectService.updateProjectImage(projectId, updateProjectImageDto);
- }
+  )
+  async uploadedFile(@UploadedFile() file) {
+    const response = {
+      originalname: file.originalname,
+      filename: file.filename,
+    };
+    return response;
+  }
 
-//Upload video file  
-@Post('/uploadvideo/:projectId')
-@UseInterceptors(
-  FileInterceptor('video', {
-    storage: diskStorage({
-      destination: './files',
-      filename: editFileName,
+  //Image upload and Update
+  @Patch('/updateProjectImage/:projectId')
+  async updateImage(
+    @Param('projectId') projectId: string,
+    @Body() updateProjectImageDto: UpdateProjectImageDto,
+  ): Promise<Project> {
+    return this.projectService.updateProjectImage(
+      projectId,
+      updateProjectImageDto,
+    );
+  }
+
+  //Upload video file
+  @Post('/uploadvideo/:projectId')
+  @UseInterceptors(
+    FileInterceptor('video', {
+      storage: diskStorage({
+        destination: './files',
+        filename: editFileName,
+      }),
+      fileFilter: imageFileFilter,
     }),
-    fileFilter: imageFileFilter,
-  }),
-)  async uploadVideo(@UploadedFile() file) {
-  const response = {
-    originalname: file.originalname,
-    filename: file.filename,
-  };
-  return response;
-}
- 
-//Update Video file name
- @Patch('/updateProjectVideo/:projectId')
- async updateVideo(@Param('projectId') projectId: string, @Body() updateProjectVideoDto: UpdateProjectVideoDto): Promise<Project> {
-     return this.projectService.updateProjectVideo(projectId, updateProjectVideoDto);
- }
+  )
+  async uploadVideo(@UploadedFile() file) {
+    const response = {
+      originalname: file.originalname,
+      filename: file.filename,
+    };
+    return response;
+  }
 
-// @Patch("/basicfile/:projectId")
-// updateData(): string {
-//   return 'This action returns all Data';
-// }
-  
+  //Update Video file name
+  @Patch('/updateProjectVideo/:projectId')
+  async updateVideo(
+    @Param('projectId') projectId: string,
+    @Body() updateProjectVideoDto: UpdateProjectVideoDto,
+  ): Promise<Project> {
+    return this.projectService.updateProjectVideo(
+      projectId,
+      updateProjectVideoDto,
+    );
+  }
 
+  // @Patch("/basicfile/:projectId")
+  // updateData(): string {
+  //   return 'This action returns all Data';
+  // }
 
-// async updateBasicfile(@UploadedFile() file) {
-//   const response = {
-//     originalname: file.originalname,
-//     filename: file.filename,
-//   };
-//   return response;
-// }
+  // async updateBasicfile(@UploadedFile() file) {
+  //   const response = {
+  //     originalname: file.originalname,
+  //     filename: file.filename,
+  //   };
+  //   return response;
+  // }
 
-// async updateBasicfile(@Param('projectId') projectId: string, @Body() updateBasicFileDto: UpdateBasicFileDto): Promise<Project> {
-//     return this.projectService.updateBasicFile(projectId, updateBasicFileDto);
-// }
-
+  // async updateBasicfile(@Param('projectId') projectId: string, @Body() updateBasicFileDto: UpdateBasicFileDto): Promise<Project> {
+  //     return this.projectService.updateBasicFile(projectId, updateBasicFileDto);
+  // }
 
   //Funding Update
   @Patch('/funding/:projectId')
-  async updateFunding(@Param('projectId') projectId: string, @Body() updateBasicDto: UpdateBasicDto): Promise<Project> {
-      return this.projectService.updateBasic(projectId, updateBasicDto);
+  async updateFunding(
+    @Param('projectId') projectId: string,
+    @Body() updateBasicDto: UpdateBasicDto,
+  ): Promise<Project> {
+    return this.projectService.updateBasic(projectId, updateBasicDto);
   }
 
   //Story Update
   @Patch('/story/:projectId')
-  async updateStory(@Param('projectId') projectId: string, @Body() updateStoryDto: UpdateStoryDto): Promise<Project> {
-      return this.projectService.updateStory(projectId, updateStoryDto);
+  async updateStory(
+    @Param('projectId') projectId: string,
+    @Body() updateStoryDto: UpdateStoryDto,
+  ): Promise<Project> {
+    return this.projectService.updateStory(projectId, updateStoryDto);
   }
 
-   //Myteam Update
-   @Patch('/myteam/:projectId')
-   async updateMyteam(@Param('projectId') projectId: string, @Body() updateMyteamDto: UpdateMyteamDto): Promise<Project> {
-       return this.projectService.updateMyteam(projectId, updateMyteamDto);
-   }
+  //Myteam Update
+  @Patch('/myteam/:projectId')
+  async updateMyteam(
+    @Param('projectId') projectId: string,
+    @Body() updateMyteamDto: UpdateMyteamDto,
+  ): Promise<Project> {
+    return this.projectService.updateMyteam(projectId, updateMyteamDto);
+  }
 
-    //PaymentMethod Update
-    @Patch('/payment/:projectId')
-    async updatePaymentMethod(@Param('projectId') projectId: string, @Body() updatePaymentMethodDto: UpdatePaymentMethodDto): Promise<Project> {
-        return this.projectService.updatePaymentMethod(projectId, updatePaymentMethodDto);
-    }
-
-
+  //PaymentMethod Update
+  @Patch('/payment/:projectId')
+  async updatePaymentMethod(
+    @Param('projectId') projectId: string,
+    @Body() updatePaymentMethodDto: UpdatePaymentMethodDto,
+  ): Promise<Project> {
+    return this.projectService.updatePaymentMethod(
+      projectId,
+      updatePaymentMethodDto,
+    );
+  }
 }

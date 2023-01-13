@@ -3,7 +3,6 @@ import { InjectModel } from '@nestjs/mongoose';
 import { v4 as uuidv4 } from 'uuid';
 import {FilterQuery, Model } from 'mongoose';
 import { UserDetails } from './user-details.interface';
-
 import { UserDocument } from './user.schema';
 
 @Injectable()
@@ -41,8 +40,11 @@ async getAllData(): Promise<UserDetails[]> {
 
   /// userId ////////
 
-async getUserById(userId: string): Promise<UserDetails> {
-  return this.userModel.findOne({ userId })
+// async getUserById(userId: string): Promise<UserDetails> {
+//   return this.userModel.findOne({ userId })
+// }
+async getUserByEmail(email: string): Promise<UserDetails> {
+  return this.userModel.findOne({ email })
 }
 
   async create(
