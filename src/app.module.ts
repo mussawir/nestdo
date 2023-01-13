@@ -13,7 +13,7 @@ import { MulterModule } from '@nestjs/platform-express';
 import { ImageUploadModule } from './imageupload/imageupload.module';
 import { FileUploadModule } from './fileupload/fileupload.module';
 import { ServeStaticModule } from '@nestjs/serve-static/dist/serve-static.module';
- import {InvestorModule} from "./Investor/investor.module"
+//  import {InvestorModule} from "./Investor/investor.module"
 import { join } from 'path';
 
 @Module({
@@ -35,7 +35,7 @@ import { join } from 'path';
     CountryModule,
     ImageUploadModule,
     FileUploadModule,
-    InvestorModule,
+    // InvestorModule,
   ],
   controllers: [AppController],
   providers: [AppService],
